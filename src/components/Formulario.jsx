@@ -30,6 +30,7 @@ export const Formulario = () => {
         }
         if (password !== r_password) {
             alert('Las contraseñas deben coincidir.');
+            setUserForm(initialUserForm);
             return;
         }
         console.log(userForm);
@@ -41,26 +42,26 @@ export const Formulario = () => {
             <h3>Registrarse</h3>
             <p>Crea tu cuenta</p>
             <input
-                className="form-control my-3 w-75"
+                className="form-control my-3 w-25"
                 placeholder="Nombre de Usuario"
                 name="username"
                 value={ username}
                 onChange={onInputChange} />
             <input
-                className="form-control my-3 w-75"
+                className="form-control my-3 w-25"
                 placeholder="Email"
                 name="email"
                 value={email}
                 onChange={onInputChange} />
             <input
-                className="form-control my-3 w-75"
+                className="form-control my-3 w-25"
                 placeholder="Contraseña"
                 type="password"
                 name="password"
                 value={password}
                 onChange={onInputChange} />
             <input
-                className="form-control my-3 w-75"
+                className="form-control my-3 w-25"
                 placeholder="Confirmar contraseña"
                 type="password"
                 name="r_password"
