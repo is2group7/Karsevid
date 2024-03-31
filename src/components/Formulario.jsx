@@ -21,7 +21,21 @@ export const Formulario = () => {
             [name]: value,
         })
     }
-    
+    const onSubmit = (event) => {
+        event.preventDefault(); //Para evitar perdida de datos.
+
+        if (!username.trim() || !password.trim() || !r_password.trim() || !email.trim()) {
+            alert('Debe completar los campos del formulario!');
+            return;
+        }
+        if (password !== r_password) {
+            alert('Las contraseñas deben coincidir.');
+            return;
+        }
+        console.log(userForm);
+        //Guardar el user form en el listado de usuarios.
+        setUserForm(initialUserForm);
+    }
     return (
         <form onSubmit={onSubmit}>
             <h3>Registrarse</h3>
