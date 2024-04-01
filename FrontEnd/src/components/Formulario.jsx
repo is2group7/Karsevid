@@ -1,4 +1,5 @@
 import { useState } from "react"
+import swal from "sweetalert";
 
 const initialUserForm = {
     username: '',
@@ -25,11 +26,19 @@ export const Formulario = () => {
         event.preventDefault(); //Para evitar perdida de datos.
 
         if (!username.trim() || !password.trim() || !r_password.trim() || !email.trim()) {
-            alert('Debe completar los campos del formulario!');
+            swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "No dejes en blanco las casillas obligatorias!",
+            });
             return;
         }
         if (password !== r_password) {
-            alert('Las contraseñas deben coincidir.');
+            swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Las contraseñas deben coincidir.",
+            });
             setUserForm(initialUserForm);
             return;
         }
