@@ -1,7 +1,7 @@
 import { ComponentType, ReactNode } from "react";
 
-export interface IRoute {
+export interface InterfazRuta {
 	path: string;
-	componente: ComponentType<ReactNode>;
-	exacta: boolean;
+	component: ComponentType<ReactNode>;
+	correcta: boolean;
 }

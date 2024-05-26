@@ -1,0 +1,66 @@
+.volverBtn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 20rem;
+	overflow: hidden;
+
+	border-radius: 1rem;
+
+	&__title {
+		width: 100%;
+		margin: 0;
+		padding: 1.85rem;
+
+		border: 0.3rem solid #00296b;
+		border-radius: 1rem;
+	}
+
+	&::before {
+		position: absolute;
+		top: 0;
+		left: 50%;
+		z-index: 1000;
+
+		width: 0%;
+		height: 100%;
+		padding: 0;
+
+		background-color: #00296b;
+		border: inherit;
+		border-radius: 1rem;
+
+		transition: width 0.2s ease-in, left 0.2s ease-in;
+
+		content: "";
+	}
+
+	&:hover {
+		box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.5);
+		transform: scale(1.1);
+
+		&::before {
+			left: 0;
+
+			width: 100%;
+		}
+	}
+
+	&__icon {
+		position: absolute;
+		z-index: 10000;
+
+		color: #fff;
+		font-size: 6rem;
+
+		visibility: hidden;
+		opacity: 0;
+
+		transition: opacity 0.2s ease-in, visibility 0.2s ease-in;
+	}
+
+	&:hover &__icon {
+		visibility: visible;
+		opacity: 1;
+	}
+}

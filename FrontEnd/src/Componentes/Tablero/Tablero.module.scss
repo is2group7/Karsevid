@@ -1,0 +1,111 @@
+.tablero {
+	width: 30%;
+	min-width: 20rem;
+	margin: 1.66%;
+
+	&__inner {
+		position: relative;
+
+		overflow: hidden;
+
+		text-align: center;
+
+		background-color: #00296b;
+		border-radius: 1rem;
+		cursor: pointer;
+
+		transition: transform 0.2s ease-in, box-shadow 0.2s ease-in;
+	}
+
+	&__link {
+		z-index: 10;
+
+		display: block;
+		padding: 2rem;
+
+		&,
+		&:visited {
+			text-decoration: none;
+		}
+	}
+
+	&__title {
+		margin: 0;
+
+		color: #fff;
+		word-break: break-word;
+	}
+
+	&__form {
+		display: flex;
+		justify-content: center;
+
+		padding: 2rem;
+	}
+
+	&__input {
+		width: 100%;
+		max-width: 100%;
+		padding: 0;
+
+		font-size: 2.4rem;
+		text-align: center;
+
+		border-radius: 0.5rem;
+		box-shadow: 0 0.2rem 0.5rem rgba(3, 2, 2, 0.15),
+			0 0.2rem 0.5rem rgb(0, 0, 0, 0.15);
+	}
+
+	&__btn {
+		position: absolute !important;
+		top: 0;
+		z-index: 10000;
+
+		width: 35%;
+		height: 100%;
+
+		visibility: hidden;
+		opacity: 0;
+
+		transition: opacity 0.1s ease-in, visibility 0.1s ease-in,
+			transform 0.2s ease !important;
+
+		&_edit {
+			left: 0;
+
+			background-color: #fdc500 !important;
+			border-radius: 1rem 0 0 1rem;
+
+			transform: translateX(-70%);
+		}
+
+		&_remove {
+			right: 0;
+
+			background-color: #ff220f !important;
+			border-radius: 0 1rem 1rem 0;
+
+			transform: translateX(70%);
+		}
+
+		&:hover {
+			transform: translateX(0%);
+		}
+	}
+
+	&__icon {
+		font-size: 3rem;
+
+		fill: #00296b;
+	}
+
+	&__inner:hover {
+		box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.5);
+		transform: scale(1.1);
+
+		.tablero__btn {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+}

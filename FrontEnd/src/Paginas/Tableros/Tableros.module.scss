@@ -1,0 +1,25 @@
+.container {
+	width: 100%;
+	max-width: 1400px;
+	margin: 0 auto;
+	padding: 0 3rem;
+}
+
+.tableros {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+.row {
+	display: flex;
+	flex-basis: 50%;
+
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+
+	&_form {
+		max-height: 100vh;
+	}
+}

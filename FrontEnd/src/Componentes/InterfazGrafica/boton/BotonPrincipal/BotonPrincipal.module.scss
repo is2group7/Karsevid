@@ -1,0 +1,18 @@
+.BtnPrincipal {
+	position: relative;
+
+	margin: 0;
+	padding: 0;
+
+	color: #000;
+	font-weight: 700;
+	font-size: inherit;
+	font-family: inherit;
+	text-align: center;
+
+	background: transparent;
+	border: none;
+	cursor: pointer;
+
+	transition: transform 0.2s ease-in, box-shadow 0.2s ease-in;
+}

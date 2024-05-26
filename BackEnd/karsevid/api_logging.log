@@ -30,3 +30,7 @@ LINE 1: ...m', 'fa5a02c9cc183b3ff1bfcd4c2243f85c') RETURNING "usuarios"...
 DETAIL:  La fila que falla contiene (null, Karpi, Brian Nicolas, Duré Aquino, durebrian01@gmail.com, fa5a02c9cc183b3ff1bfcd4c2243f85c, null, null, 2024-03-31 21:15:12.39213, 2024-03-31 21:15:12.39213).
 
 2024-03-31 17:25:16,569 - ERROR - Cod.: -1, Mensaje: Ha ocurrido un error inesperado , Det_mensaje: Field 'cod_usuario' expected a number but got 'Karpi'.
+2024-03-31 22:32:49,480 - ERROR - Cod.: -1, Mensaje: Ha ocurrido un error inesperado , Det_mensaje: Expecting value: line 1 column 1 (char 0)
+2024-03-31 22:33:25,952 - ERROR - Cod.: -1, Mensaje: Ha ocurrido un error inesperado , Det_mensaje: el valor nulo en la columna «cod_usuario» de la relación «usuarios» viola la restricción de no nulo
+DETAIL:  La fila que falla contiene (null, Karpi, Brian Nicolas, Duré Aquino, durebrian01@gmail.com, fa5a02c9cc183b3ff1bfcd4c2243f85c, null, null, 2024-04-01 02:33:25.947625, 2024-04-01 02:33:25.947625).
+

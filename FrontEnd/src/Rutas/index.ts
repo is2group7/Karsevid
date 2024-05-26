@@ -1,8 +1,8 @@
-import Tablero from "../Paginas/Tablero/Tableros";
-import TableroActual from "../Paginas/TableroActual/TablerosActual";
-import { IRoute } from "../Types/rutas";
+import TableroActual from "../paginas/TableroActual/TableroActual"; 
+import Tableros from "../paginas/Tableros/Tableros"; 
+import { InterfazRuta } from "../types/rutas";
 
-export const rutas: IRoute[] = [
-	{ path: "/", componente: Tablero, exacta: true },
-	{ path: "/:id", componente: TableroActual, exacta: true },
+export const routes: InterfazRuta[] = [
+	{ path: "/", component: Tableros, correcta: true },
+	{ path: "/:id", component: TableroActual, correcta: true },
 ];
