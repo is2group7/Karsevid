@@ -10,7 +10,7 @@ interface TableroListProps {
 const TableroList: FC<TableroListProps> = ({ tableros }) => {
 	return (
 		<div className={cl.tableroList}>
-			<h2 className={cl.tableroList__title}>Hola %USUARIO%,<br/> aqui estan tus tableros</h2>
+			<h2 className={cl.tableroList__title}>Tus tableros</h2>
 			<div className={cl.container}>
 				{tableros.map(([tableroID, tablero]) => (
 					<Tablero key={tableroID} id={tablero.id} tablero_nombre={tablero.nombre_tablero} />
