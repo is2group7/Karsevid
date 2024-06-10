@@ -1,6 +1,6 @@
 .tablero {
 	width: 30%;
-	min-width: 20rem;
+	min-width: 25rem;
 	margin: 1.66%;
 
 	&__inner {
@@ -10,7 +10,7 @@
 
 		text-align: center;
 
-		background-color: #00296b;
+		background-color: #4F628E; /* color boton de tableros*/
 		border-radius: 1rem;
 		cursor: pointer;
 
@@ -32,7 +32,7 @@
 	&__title {
 		margin: 0;
 
-		color: #fff;
+		color: #fff; /*color letra del botón*/
 		word-break: break-word;
 	}
 
@@ -73,7 +73,7 @@
 		&_edit {
 			left: 0;
 
-			background-color: #fdc500 !important;
+			background-color: #7C84AE !important; /* color del botón editar tablero*/
 			border-radius: 1rem 0 0 1rem;
 
 			transform: translateX(-70%);
@@ -82,7 +82,7 @@
 		&_remove {
 			right: 0;
 
-			background-color: #ff220f !important;
+			background-color: #FD3338 !important; /* color del botón borrar tablero*/
 			border-radius: 0 1rem 1rem 0;
 
 			transform: translateX(70%);
