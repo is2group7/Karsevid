@@ -1,0 +1,47 @@
+2024-04-04 21:46:48,658 - ERROR - Hubo un error al recuperar los datos la sintaxis de entrada no es válida para tipo integer: «None»
+LINE 1: ...on from usuarios_sesiones a where a.cod_usuario = 'None' and...
+                                                             ^
+
+2024-04-04 21:49:02,235 - ERROR - Hubo un error al recuperar los datos la sintaxis de entrada no es válida para tipo integer: «None»
+LINE 1: ...on from usuarios_sesiones a where a.cod_usuario = 'None' and...
+                                                             ^
+
+2024-04-04 21:58:21,621 - ERROR - Hubo un error al recuperar los datos name 'psycopg2' is not defined
+2024-04-04 21:58:28,797 - ERROR - Hubo un error al recuperar los datos name 'psycopg2' is not defined
+2024-04-04 21:59:30,863 - ERROR - Hubo un error al recuperar los datos name 'psycopg2' is not defined
+2024-04-04 22:00:33,696 - ERROR - Hubo un error al recuperar los datos name 'psycopg2' is not defined
+2024-04-04 22:00:45,028 - ERROR - Hubo un error al recuperar los datos name 'psycopg2' is not defined
+2024-04-04 22:01:35,096 - ERROR - Hubo un error al recuperar los datos la sintaxis de entrada no es válida para tipo integer: «None»
+LINE 1: ...on from usuarios_sesiones a where a.cod_usuario = 'None' and...
+                                                             ^
+
+2024-04-04 22:02:50,123 - ERROR - Hubo un error al recuperar los datos name 'psycopg2' is not defined
+2024-04-04 22:03:18,892 - ERROR - Hubo un error al recuperar los datos name 'psycopg2' is not defined
+2024-04-04 22:04:25,607 - ERROR - Hubo un error al recuperar los datos name 'psycopg2' is not defined
+2024-04-04 22:04:33,012 - ERROR - Hubo un error al recuperar los datos name 'psycopg2' is not defined
+2024-04-04 22:05:05,391 - ERROR - Hubo un error al recuperar los datos can only concatenate str (not "list") to str
+2024-04-04 22:05:15,181 - ERROR - Hubo un error al recuperar los datos can only concatenate str (not "list") to str
+2024-04-04 22:07:41,964 - ERROR - Hubo un error al recuperar los datos list indices must be integers or slices, not str
+2024-04-04 22:07:47,071 - ERROR - Hubo un error al recuperar los datos list indices must be integers or slices, not str
+2024-04-04 22:08:15,681 - ERROR - Hubo un error al recuperar los datos can only concatenate str (not "tuple") to str
+2024-04-04 22:26:36,344 - INFO - Resultado: [(16,)]
+2024-04-04 22:27:19,905 - INFO - Resultado: [(16,)]
+2024-04-04 22:27:44,100 - ERROR - Hubo un error al recuperar los datos name 'psycopg2' is not defined
+2024-04-04 22:29:45,414 - ERROR - Hubo un error al recuperar los datos __class__ assignment: 'RealDictCursor' object layout differs from 'CursorDebugWrapper'
+2024-04-04 22:47:58,799 - INFO - Resultado: [(16,)]
+2024-04-04 22:47:58,824 - ERROR - Hubo un error al recuperar los datos la sintaxis de entrada no es válida para tipo integer: «None»
+LINE 1: ...on from usuarios_sesiones a where a.cod_usuario = 'None' and...
+                                                             ^
+
+2024-04-04 22:49:56,264 - INFO - Resultado: [(16,)]
+2024-04-04 22:49:56,273 - ERROR - Hubo un error al recuperar los datos la sintaxis de entrada no es válida para tipo integer: «None»
+LINE 1: ...on from usuarios_sesiones a where a.cod_usuario = 'None' and...
+                                                             ^
+
+2024-04-04 22:51:04,526 - INFO - Resultado: (16,)
+2024-04-04 22:51:04,529 - ERROR - Hubo un error al recuperar los datos la sintaxis de entrada no es válida para tipo integer: «None»
+LINE 1: ...on from usuarios_sesiones a where a.cod_usuario = 'None' and...
+                                                             ^
+
+2024-04-04 22:51:48,393 - INFO - Resultado: (16,)
+2024-04-04 22:51:48,401 - INFO - Resultado: None
