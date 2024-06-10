@@ -10,6 +10,7 @@ pylint-django = "*"
 pylint-celery = "*"
 psycopg2 = "*"
 psycopg2-binary = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 

@@ -24,6 +24,14 @@ urlpatterns = [
     path('api/prueba', views.call_test, name='call_test'),
     path('api/registro', views.registrarse, name='registrarse'),
     path('api/autenticar', views.autenticar, name='autenticar'),
+    
+    #Espacios de trabajo
+    path('api/espacios/listar', views.listarEspacios, name='listarEspacios'),
+    path('api/espacios/crear', views.crearEspacio, name='crearEspacio'),
+
+    #Tableros
+    path('api/tableros/listar', views.listarTableros, name='listarTableros'),
+    path('api/tableros/crear', views.crearTableros, name='crearTableros'),
 
     #front
     path('login/', frontViews.login, name='login')

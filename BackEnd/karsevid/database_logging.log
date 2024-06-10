@@ -45,3 +45,37 @@ LINE 1: ...on from usuarios_sesiones a where a.cod_usuario = 'None' and...
 
 2024-04-04 22:51:48,393 - INFO - Resultado: (16,)
 2024-04-04 22:51:48,401 - INFO - Resultado: None
+2024-06-10 12:39:01,001 - ERROR - Hubo un error al recuperar los datos no existe la relación «usuarios_espacios»
+LINE 2:                     from usuarios_espacios ue, espacios es  
+                                 ^
+
+2024-06-10 12:45:03,781 - ERROR - Hubo un error al recuperar los datos no existe la relación «usuarios_espacios»
+LINE 2:                     from usuarios_espacios ue, espacios es  
+                                 ^
+
+2024-06-10 12:48:52,796 - ERROR - Hubo un error al recuperar los datos no existe la relación «usuarios_espacios»
+LINE 2:                     from usuarios_espacios ue, espacios es  
+                                 ^
+
+2024-06-10 12:49:41,220 - ERROR - Hubo un error al recuperar los datos no existe la relación «usuarios_espacios»
+LINE 2:                     from usuarios_espacios ue, espacios es  
+                                 ^
+
+2024-06-10 12:49:52,723 - ERROR - Hubo un error al recuperar los datos no existe la relación «usuarios_espacios»
+LINE 2:                     from usuarios_espacios ue, espacios es  
+                                 ^
+
+2024-06-10 12:50:01,044 - ERROR - Hubo un error al recuperar los datos no existe la relación «usuarios_espacios»
+LINE 2:                     from usuarios_espacios ue, espacios es  
+                                 ^
+
+2024-06-10 12:53:23,745 - INFO - Se obtuvieron 1 espacios de trabajo.
+2024-06-10 12:53:41,357 - INFO - Se obtuvieron 2 espacios de trabajo.
+2024-06-10 12:56:46,263 - ERROR - Hubo un error al recuperar los datos error de sintaxis en o cerca de «ue»
+LINE 4:                     ue.cod_usuario = '16'
+                            ^
+
+2024-06-10 12:57:28,781 - INFO - Se obtuvieron 2 espacios de trabajo.
+2024-06-10 14:12:22,566 - INFO - Se obtuvieron 2 espacios de trabajo.
+2024-06-10 14:13:00,588 - INFO - Se obtuvieron 2 tableros para el espacio de trabajo: 5
+2024-06-10 14:13:37,985 - INFO - Se obtuvieron 2 tableros para el espacio de trabajo: 5

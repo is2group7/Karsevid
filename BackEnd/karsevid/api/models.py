@@ -3,6 +3,15 @@ from django.http import JsonResponse
 import uuid
 from .Utilitarios import log, django_con
 
+cListarEspacios = """select es.cod_espacio, es.nom_espacio, es.desc_espacio, usu.nom_usuario
+                    from usuarios_espacio ue, espacios es, usuarios usu  
+                    where ue.cod_espacio = es.cod_espacio and ue.cod_usuario = usu.cod_usuario 
+                      and ue.cod_usuario = '{cod_usuario}'"""
+
+cListarTableros = """select tab.cod_tablero, tab.nom_tablero, tab.desc_tablero, tab.orden_tablero, usu.nom_usuario
+                    from tableros tab, usuarios usu
+                    where tab.usu_creador = usu.cod_usuario and tab.cod_espacio = '{cod_espacio}'"""
+
 # Modelo respuesta genérica
 class Respuesta(models.Model):
     cod_respuesta = models.IntegerField()
@@ -105,25 +114,56 @@ class AuthUsuario(models.Model):
     
 # Modelo para Espacio de trabajo
 class EspacioTrabajo(models.Model):
-    cod_espacio  = models.IntegerField()
+    cod_espacio  = models.IntegerField(primary_key=True)
     nom_espacio  = models.CharField(max_length=50)
     desc_espacio = models.CharField(max_length=200)
     usu_creador  = models.IntegerField()
     estado       = models.CharField(max_length=1)
 
-    def __init__(self, nom_usuario,password):
-        self.nom_usuario = nom_usuario
-        self.password = password
-
-    def validarUsuario(self):
-        sql = f"select a.cod_usuario from usuarios a where a.nom_usuario = '{self.nom_usuario}' and a.pass_usuario = '{self.password}'"
-        res = django_con.consultaSQL(sql,1)
-        print(res)
+    class Meta: 
+        db_table = 'espacios'
+    
+    def listarEspaciosTrabajo(cod_usuario):
+        sql = cListarEspacios.format(cod_usuario=cod_usuario)
+        res = django_con.consultaSQL(sql,0)
+        log.bdLogger.info('Se obtuvieron ' + str(len(res)) + ' espacios de trabajo.')
+        espacios = []
         if res:
-            self.cod_usuario = res[0]
-            return True
-        else:
-            return False
+            for espacio in res:
+                espacios.append({
+                    'cod_espacio' : espacio[0],
+                    'nom_espacio' : espacio[1],
+                    'desc_espacio': espacio[2],
+                    'usu_creador' : espacio[3]
+                })
+        return espacios
 
+# Modelo para Tableros
+class Tableros(models.Model):
+    cod_tablero   = models.IntegerField(primary_key=True)
+    cod_espacio   = models.IntegerField()
+    usu_creador   = models.IntegerField()
+    nom_tablero   = models.CharField(max_length=50)
+    desc_tablero  = models.CharField(max_length=200)
+    orden_tablero = models.IntegerField() 
+
+    class Meta: 
+        db_table = 'tableros'
+    
+    def listarTableros(cod_espacio):
+        sql = cListarTableros.format(cod_espacio=cod_espacio)
+        res = django_con.consultaSQL(sql,0)
+        log.bdLogger.info('Se obtuvieron ' + str(len(res)) + ' tableros para el espacio de trabajo: ' + cod_espacio)
+        tableros = []
+        if res:
+            for tablero in res:
+                tableros.append({
+                    'cod_tablero'   : tablero[0],
+                    'nom_tablero'   : tablero[1],
+                    'desc_tablero'  : tablero[2],
+                    'orden_tablero' : tablero[3],
+                    'usu_creador'   : tablero[4]
+                })
+        return tableros
 
         
