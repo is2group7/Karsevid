@@ -12,11 +12,17 @@ def call_test(request):
 # Endpoint: api/login
 def autenticar(request):
     if request.method == 'POST':
-        usuario = request.POST.get('usuario', '')
-        password = request.POST.get('password', '')
+        # Obtener datos del request
+        reqBody = json.loads(request.body) 
+        usuario = reqBody.get('usuario','')
+        password = reqBody.get('password','')
+        
+        # Crear objeto en base 
         auth = AuthUsuario(usuario, password)
-        if auth.validarUsuario():
-            return redirect("/workspaces")  # Redirigir a una página de éxito después de crear el objeto
+        uuidSesion = auth.iniciarSesion()
+        if uuidSesion != None:
+            res = Respuesta(0, uuidSesion, '')
+            return res.toJson()
         else:
             res = Respuesta(10, 'Usuario o Contraseña inválidos!','')
             return res.toJson()
@@ -28,7 +34,7 @@ def autenticar(request):
 def registrarse(request):
     try:
         if request.method == 'POST':
-            #Obtenemos datos del request
+            # Obtenemos datos del request
             reqBody = json.loads(request.body)
             usuario = reqBody.get('usuario','')
             nombres = reqBody.get('nombres', '')
@@ -53,3 +59,14 @@ def registrarse(request):
         res = Respuesta(-1, 'Ha ocurrido un error inesperado',str(e))
         log.apiLogger.error(str(res))
         return res.toJson()
+
+
+# Endpoint: api/espacios/crear
+def registrarse(request):
+    if request.method == 'PUT':
+        #Obtenemos datos del request
+        reqBody = json.loads(request.body)
+        uuid   = reqBody.get('uuid','')
+        nombre = reqBody.get('nom_espacio','')
+        descripcion = reqBody.get('desc_espacio','')
+        

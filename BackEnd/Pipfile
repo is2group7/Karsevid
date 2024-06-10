@@ -9,6 +9,7 @@ pylint = "*"
 pylint-django = "*"
 pylint-celery = "*"
 psycopg2 = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 

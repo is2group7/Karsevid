@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/prueba', views.call_test, name='call_test'),
     path('api/registro', views.registrarse, name='registrarse'),
+    path('api/autenticar', views.autenticar, name='autenticar'),
 
     #front
     path('login/', frontViews.login, name='login')
