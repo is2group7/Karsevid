@@ -16,6 +16,10 @@ export const setInputValue = (value: string): FormAction => {
 	return { type: FormActionTypes.SET_INPUT_VALUE, payload: value };
 };
 
+export const setDescripcionValue = (value: string): FormAction => ({
+	type: FormActionTypes.SET_DESCRIPCION_VALUE, payload: value,
+  });
+
 export const submitFormCancel = (): FormAction => {
 	return {
 		type: FormActionTypes.SUBMIT_FORM_CANCEL,

@@ -5,14 +5,16 @@ export const addTarjeta = ({
 	tableroID,
 	id: tarjetaID,
 	nombre_tarjeta,
+	descripcion,
 }: {
 	tableroID: string;
 	id: string;
 	nombre_tarjeta: string;
+	descripcion: string;
 }): TarjetaAction => {
 	return {
 		type: TarjetaActionTypes.ADD_TARJETA,
-		payload: { tableroID, tarjetaID, nombre_tarjeta },
+		payload: { tableroID, tarjetaID, nombre_tarjeta , descripcion},
 	};
 };
 
@@ -24,6 +26,19 @@ export const eliminarTarjeta = ({
 	id: string;
 }): TarjetaAction => {
 	return { type: TarjetaActionTypes.ELIMINAR_TARJETA, payload: { tableroID, tarjetaID } };
+};
+
+export const cambiarDescripcionTarjeta = ({
+	id: tarjetaID,
+	descripcion,
+}: {
+	id: string;
+	descripcion: string;
+}): TarjetaAction => {
+	return {
+		type: TarjetaActionTypes.CAMBIAR_DESCRIPCION_TARJETA,
+		payload: { tarjetaID, descripcion },
+	};
 };
 
 export const cambiarNombreTarjeta = ({

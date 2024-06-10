@@ -5,6 +5,7 @@ export interface InterfazTarjeta {
 	id: string;
 	nombre_tarjeta: string;
 	tareas: string[];
+	descripcion: string;
 }
 
 export interface TarjetaState {
@@ -21,12 +22,18 @@ export enum TarjetaActionTypes {
 	ELIMINAR_TABLERO = "ELIMINAR_TABLERO",
 	ADD_TAREA = "ADD_TAREA",
 	ELIMINAR_TAREA = "ELIMINAR_TAREA",
+	CAMBIAR_DESCRIPCION_TARJETA = "CAMBIAR_DESCRIPCION_TARJETA",
 	DRAG_DROP = "DRAG_DROP",
 }
 
 interface AddTarjetaAction {
 	type: TarjetaActionTypes.ADD_TARJETA;
-	payload: { tableroID: string; tarjetaID: string; nombre_tarjeta: string };
+	payload: { tableroID: string; tarjetaID: string; nombre_tarjeta: string; descripcion: string};
+}
+
+interface CambiarDescripcionTarjeta {
+	type: TarjetaActionTypes.CAMBIAR_DESCRIPCION_TARJETA;
+	payload: { tarjetaID: string; descripcion: string };
 }
 
 interface EliminarTarjetaAction {
@@ -72,4 +79,5 @@ export type TarjetaAction =
 	| EliminarTableroAction
 	| AddTareaAction
 	| EliminarTareaAction
-	| DragAndDropAction;
+	| DragAndDropAction
+	| CambiarDescripcionTarjeta; 

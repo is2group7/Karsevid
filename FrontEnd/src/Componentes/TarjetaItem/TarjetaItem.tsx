@@ -100,10 +100,14 @@ const TarjetaItem: FC<TarjetaItemProps> = ({ tarjeta, index }) => {
 									</form>
 								) : (
 									<h3 className={cl.tarjetaItem__title}>
-										{tarjeta.nombre_tarjeta}
+										{tarjeta.nombre_tarjeta}																		
 									</h3>
 								)}
+									<h6 className={cl.tarjetaItem__desc}>
+										{tarjeta.descripcion}																		
+									</h6>
 							</div>
+
 
 							<TiDelete
 								className={cl.tarjetaItem__icon}
@@ -114,6 +118,7 @@ const TarjetaItem: FC<TarjetaItemProps> = ({ tarjeta, index }) => {
 									})
 								}
 							/>
+
 						</div>
 						<Droppable droppableId={tarjeta.id} type="tarea">
 							{(provided) => (

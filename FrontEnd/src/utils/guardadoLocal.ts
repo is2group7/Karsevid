@@ -2,6 +2,33 @@ import { IntefazTablero } from "../types/tablero";
 import { InterfazTarea } from "../types/tarea";
 import { InterfazTarjeta } from "../types/tarjeta";
 
+// Modifica la URL de la API según corresponda
+const API_URL = 'https://192.168.100.155:8000/api/tableros/listar?cod_espacio=5';
+
+export const obtenerDatos = async () => {
+  try {
+    const respuesta = await fetch(API_URL);
+    const datos = await respuesta.json();
+	console.log('Datos obtenidos de la API:', datos)
+    return datos;
+  } catch (error) {
+    console.error('Error al obtener datos de la API:', error);
+    throw error;
+  }
+};
+
+// Aquí puedes usar la función obtenerDatos para obtener datos de tu API
+obtenerDatos()
+  .then((datos) => {
+    console.log('Datos obtenidos de la API:', datos);
+  })
+  .catch((error) => {
+    console.error('Error al obtener datos de la API:', error);
+  });
+
+
+
+
 export const getState = () => {
 	try {
 		const stateCollection = localStorage.getItem("boardsCollection");
@@ -40,3 +67,6 @@ export const setState = ({
 		throw e;
 	}
 };
+
+
+  
