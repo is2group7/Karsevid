@@ -28,6 +28,7 @@ urlpatterns = [
     #Espacios de trabajo
     path('api/espacios/listar', views.listarEspacios, name='listarEspacios'),
     path('api/espacios/crear', views.crearEspacio, name='crearEspacio'),
+    path('api/espacios/editar', views.editarEspacio, name='editarEspacio'),
 
     #Tableros
     path('api/tableros/listar', views.listarTableros, name='listarTableros'),

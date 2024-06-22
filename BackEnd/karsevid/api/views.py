@@ -119,6 +119,39 @@ def crearEspacio(request):
             res = Respuesta(-1, 'Ha ocurrido un error inesperado',str(e))
             log.apiLogger.error(str(res))
             return res.toJson()
+        
+# Endpoint: api/espacios/editar
+def editarEspacio(request):
+    if request.method == 'POST':
+        #Obtenemos datos del request
+        log.apiLogger.info('Se ingresa a servicio /api/espacios/editar')
+        try:
+            # Lectura de datos del request: HEADER y BODY
+            uuidReq= util.extractHeaderUUID(request)
+            reqBody = json.loads(request.body)
+            codUsuarioReq = util.obtUsuariosUUID(uuidReq)
+            
+            # Extracción de datos
+            codEspacio     = request.GET.get('cod_espacio')
+            nombreReq      = reqBody.get('nom_espacio','')
+            descripcionReq = reqBody.get('desc_espacio','')
+            estado         = reqBody.get('estado','')
+
+            #Creamos el objeto a partir de los datos recibidos.
+            espacioTrabajo = EspacioTrabajo.objects.get(pk=codEspacio)
+            espacioTrabajo.actualizarRegistro(nombreReq,descripcionReq,estado)
+            espacioTrabajo.save()
+
+            res = Respuesta(0, 'Espacio actualizado correctamente','')
+            return res.toJson()
+        except util.uuid_not_found as e:
+            res = Respuesta(-99, str(e),str(e))
+            log.apiLogger.error(str(res))
+            return res.toJson()
+        except Exception as e:
+            res = Respuesta(-1, 'Ha ocurrido un error inesperado',str(e))
+            log.apiLogger.error(str(res))
+            return res.toJson()
 
 ## TABLEROS
 

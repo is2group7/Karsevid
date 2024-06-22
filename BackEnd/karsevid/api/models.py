@@ -137,6 +137,11 @@ class EspacioTrabajo(models.Model):
                     'usu_creador' : espacio[3]
                 })
         return espacios
+    
+    def actualizarRegistro(nom_espacio, desc_espacio, estado, self):
+        self.nom_espacio = nom_espacio
+        self.desc_espacio = desc_espacio
+        self.estado = estado
 
 # Modelo para Tableros
 class Tableros(models.Model):
