@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { IntefazTablero } from "../../types/tablero";
-import Tablero from "../Tablero/Tablero"; 
+import Tablero from "../Tablero/Tablero";
 import cl from "./TableroList.module.scss";
 
 interface TableroListProps {
