@@ -6,7 +6,7 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { IntefazTablero } from "../../types/tablero"; 
 import ReturnButton from "../../componentes/InterfazGrafica/boton/BotonVolver/BotonVolver.module"; 
 import { useActions } from "../../hooks/useActions"; 
-import TarjetaForm from "../../componentes/FormTarjetas/FormTarjeta"; 
+import TarjetaForm from "../../componentes/TarjetasForm/FormTarjeta"; 
 import Tarjetas from "../../componentes/Tarjetas/Tarjetas"; 
 
 interface initTableroActual {
