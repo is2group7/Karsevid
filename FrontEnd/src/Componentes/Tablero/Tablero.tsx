@@ -44,7 +44,7 @@ const Tablero: FC<TableroProps> = ({ id, tablero_nombre }) => {
 				</BotonPrincipal>
 				<NavLink
 					className={cl.tablero__link}
-					to={`/${id}`}
+					to={`/tablero/${id}`}
 					onClick={() => submitFormCancel()}
 				>
 					<h2 className={cl.tablero__title}>{tablero_nombre}</h2>

@@ -3,6 +3,7 @@ import { VscChromeClose } from "react-icons/vsc";
 import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { validate } from "../../utils/validacion";
+
 import BotonPrincipal from "../InterfazGrafica/boton/BotonPrincipal/BotonPrincipal";
 import MyInput from "../InterfazGrafica/input/MyInput";
 import MyLabel from "../InterfazGrafica/label/MyLabel";

@@ -32,7 +32,7 @@ const TableroActual: FunctionComponent = () => {
 		<div className={cl.container}>
 			<div className={cl.TableroActual}>
 				<div className={cl.TableroActual__columna}>
-					<ReturnButton url="/" onClick={() => submitFormCancel()}>
+					<ReturnButton url="/tablero" onClick={() => submitFormCancel()}>
 						{tableroActual.nombre_tablero}
 					</ReturnButton>
 				</div>
