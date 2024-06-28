@@ -25,15 +25,10 @@ const Espacios: FC = () => {
 
         {filteredEspacios.length > 0 && (
           <div className={classNames(cl.row, cl.row_list)}>
-            <h1>Espacios</h1>
             <EspacioList espacios={filteredEspacios} />
           </div>
         )}        
       </div>
-
-      <BotonVolver url="/somepath" onClick={() => submitFormCancel()}>
-        Volver
-      </BotonVolver>
     </div>
   );
 };

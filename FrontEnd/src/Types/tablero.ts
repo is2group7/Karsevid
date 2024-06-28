@@ -1,10 +1,11 @@
 import { IDragAndDrop } from "./dragAndDrop";
 
-export interface IntefazTablero{
+export interface IntefazTablero {
 	id: string;
 	nombre_tablero: string;
 	tarjeta: string[];
-}
+	espacioID: string;
+  }
 
 export interface TableroState {
 	// eslint-disable-next-line @typescript-eslint/ban-types
@@ -25,7 +26,7 @@ export enum TableroActionTypes {
 
 interface AddTableroAction {
 	type: TableroActionTypes.ADD_TABLERO;
-	payload: { tableroID: string; nombre_tablero: string };
+	payload: { tableroID: string; nombre_tablero: string; espacioID: string };
 }
 
 interface EliminarTableroAction {

@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import BotonPrincipal from '../../componentes/InterfazGrafica/boton/BotonPrincipal/BotonPrincipal';
-import MyInput from '../../componentes/InterfazGrafica/input/MyInput';
-import MyLabel from '../../componentes/InterfazGrafica//label/MyLabel';
 import MyPointer from '../../componentes/InterfazGrafica/pointer/MyPointer';
+import cl from './PaginaInicio.module.scss';
+import monigoteInicio from '../../../assets/monigoteInicio.svg';
+import { NavLink } from "react-router-dom";
+
 
 const PaginaPrincipal: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isError, setIsError] = useState(false);
-  const { loginUsuario } = useActions();
+  const { loginUsuario, submitFormCancel } = useActions();
   const currentUser = useTypedSelector((state) => state.usuario.currentUser);
   const history = useHistory();
 
@@ -27,24 +29,46 @@ const PaginaPrincipal: React.FC = () => {
 
   useEffect(() => {
     if (currentUser) {
-      history.push('/tablero');
+      history.push('/espacios');
     }
   }, [currentUser, history]);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <MyLabel id="email">Email</MyLabel>
-      <MyInput id="email" value={email} onChange={setEmail} />
-      <MyLabel id="password">Password</MyLabel>
-      <input
-        id="password"
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)} />
-      <MyPointer isError={isError}>Todos los campos son obligatorios</MyPointer>
-      <BotonPrincipal type="submit">Login</BotonPrincipal>
-    </form>
+    <div className={cl.paginaPrincipal}>
+      <BotonPrincipal className={cl.header} type="button" onClick={() => submitFormCancel()}>
+        <NavLink className={cl.link} to="/"><h2>Karsevid</h2></NavLink>
+      </BotonPrincipal>
+      <div className={cl.contenedorPrincipal}>
+        <div className={cl.container}>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className={cl.MyInput}
+            />
+            <label htmlFor="password">Contraseña</label>
+            <input
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className={cl.MyInput}
+            />
+          <MyPointer isError={isError}>Todos los campos son obligatorios</MyPointer>
+          <button type="submit" className={cl.BotonPrincipal}>Ingresar</button>
+          </form>
+        </div>
+        <div className={cl.mensajeRegistro}>
+          <p>¿No tienes cuenta? <BotonPrincipal className={cl.openBtn}><NavLink className={cl.link} to="/registro">Regístrate</NavLink></BotonPrincipal></p>
+          <div className={cl.svgContainer}>
+              <img src={monigoteInicio} alt="SVG Image" style={{ width: '300px', height: 'auto' }} />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
-
 export default PaginaPrincipal;
