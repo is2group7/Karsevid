@@ -12,25 +12,27 @@ const App: FC = () => {
 	const { tarjetas } = useTypedSelector((state) => state.tarjeta);
 	const { tareas } = useTypedSelector((state) => state.tarea);
 	const { usuarios } = useTypedSelector((state) => state.usuario);
-	const { setTablero, setTarjeta, setTarea, setUsuario } = useActions();
+	const { espacios } = useTypedSelector((state) => state.espacio);
+	const { setTablero, setTarjeta, setTarea, setUsuario, setEspacio } = useActions();
 
 	useEffect(() => {
 		const localStorageCollection = getState();
 
 		if (localStorageCollection) {
-			const { tableros, tarjetas, tareas, usuarios } = localStorageCollection;
+			const { tableros, tarjetas, tareas, usuarios, espacios } = localStorageCollection;
 			setTablero(tableros);
 			setTarjeta(tarjetas);
 			setTarea(tareas);
 			setUsuario(usuarios);
+			setEspacio(espacios);
 		}
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {
-		setState({ tableros, tarjetas, tareas, usuarios });
-	}, [tableros, tarjetas, tareas, usuarios]);
+		setState({ tableros, tarjetas, tareas, usuarios, espacios });
+	}, [tableros, tarjetas, tareas, usuarios, espacios]);
 
 	return (
 		<div className="app">

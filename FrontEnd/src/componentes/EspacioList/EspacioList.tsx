@@ -1,21 +1,19 @@
 import React, { FC } from "react";
-import { useSelector } from 'react-redux';
 import { InterfazEspacio } from "../../types/espacios";
-import Espacio from '../Espacio/Espacio';
-
+import Espacio from "../Espacio/Espacio"; 
+import cl from "./EspacioList.module.scss";
 
 interface EspacioListProps {
-	espacios: [espacioID: string, tablero: InterfazEspacio][];
+  espacios: [espacioID: string, espacio: InterfazEspacio][];
 }
-
 
 const EspacioList: FC<EspacioListProps> = ({ espacios }) => {
   return (
-		<div>
-    <h2>Espacios disponibles</h2>
-    <div className={cl.container}>
-      {tableros.map(([tableroID, tablero]) => (
-          <Tablero key={tableroID} id={tablero.id} tablero_nombre={tablero.nombre_tablero} />
+    <div className={cl.espacioList}>
+      <h2 className={cl.espacioList__title}>Tus espacios</h2>
+      <div className={cl.container}>
+        {espacios.map(([espacioID, espacio]) => (
+          <Espacio key={espacioID} id={espacio.id} nombre={espacio.nombre} />
         ))}
       </div>
     </div>

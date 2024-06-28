@@ -38,6 +38,7 @@ const TableroForm: FC = () => {
 		<div className={cl.container}>
 			{isOpen ? (
 				<form className={cl.tableroForm} onSubmit={handleFormSubmit}>
+
 					<div className={cl.tableroForm__header}>
 						<h2 className={cl.tableroForm__title}>
 							Crea un nuevo tablero...
@@ -50,6 +51,7 @@ const TableroForm: FC = () => {
 						</BotonPrincipal>
 					</div>
 					<div className={cl.tableroForm__body}>
+
 						<MyLabel id="formInput">Crea un nombre para tu tablero</MyLabel>
 						<MyPointer isError={isError}>No puedes dejar en blanco, el nombre</MyPointer>
 						<MyInput

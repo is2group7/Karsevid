@@ -1,41 +1,84 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { EspacioState } from '../../types/espacios';
-import { RootState } from '../../store';
+import classNames from "classnames";
+import React, { FC, useState, FormEvent } from "react";
+import { RiDeleteBin2Line } from "react-icons/ri";
+import { VscEdit } from "react-icons/vsc";
+import { NavLink } from "react-router-dom";
 import { useActions } from "../../hooks/useActions";
-import TableroList from '../Tablero/TableroList';
+import { validate } from "../../utils/validacion";
+import BotonPrincipal from "../InterfazGrafica/boton/BotonPrincipal/BotonPrincipal";
+import MyInput from "../InterfazGrafica/input/MyInput";
+import cl from "./Espacio.module.scss";
 
 interface EspacioProps {
   id: string;
+  nombre: string;
 }
 
-const Espacio: React.FC<EspacioProps> = ({ id }) => {
-  const { eliminarTablero, submitFormCancel, cambiarNombreTablero } = useActions();
-  const dispatch = useDispatch();
-  const espacio = useSelector((state: RootState) => state.espacio.espacios[id]);
+const Espacio: FC<EspacioProps> = ({ id, nombre }) => {
+  const { eliminarEspacio, submitFormCancel, cambiarNombreEspacio } = useActions();
+  const [editMode, setEditMode] = useState(false);
+  const [nombreEspacio, setEspacioTitle] = useState(nombre);
 
-  const handleDelete = () => {
-    dispatch(eliminarEspacio(id));
+  const handleChangeTitle = (event: FormEvent<HTMLFormElement>) => {
+    if (validate(nombreEspacio)) {
+      cambiarNombreEspacio({ id, nombre: nombreEspacio });
+      setEditMode(false);
+    }
+
+    event.preventDefault();
   };
 
-  const handleChangeName = (newName: string) => {
-    dispatch(cambiarNombreEspacio(id, newName));
+  const handleEditClose = () => {
+    setEditMode(false);
+    setEspacioTitle(nombre);
   };
 
-  if (!espacio) {
-    return <div>Espacio no encontrado</div>;
-  }
+  const renderEspacioContainer = (): React.ReactNode => {
+    return (
+      <div className={cl.espacioContainer}>
+        <BotonPrincipal
+          className={classNames(cl.espacio__btn, cl.espacio__btn_edit)}
+          onClick={() => setEditMode(true)}
+        >
+          <VscEdit className={cl.espacio__icon} />
+        </BotonPrincipal>
+        <NavLink
+          className={cl.espacio__link}
+          to={`/espacio/${id}`}
+          onClick={() => submitFormCancel()}
+        >
+          <h2 className={cl.espacio__title}>{nombre}</h2>
+        </NavLink>
+        <BotonPrincipal
+          className={classNames(cl.espacio__btn, cl.espacio__btn_remove)}
+          onClick={() => eliminarEspacio({ id })}
+        >
+          <RiDeleteBin2Line className={cl.espacio__icon} />
+        </BotonPrincipal>
+      </div>
+    );
+  };
 
   return (
-    <div>
-      <h2>{espacio.nombre}</h2>
-      <button onClick={handleDelete}>Eliminar Espacio</button>
-      <input
-        type="text"
-        value={espacio.nombre}
-        onChange={(e) => handleChangeName(e.target.value)}
-      />
-      <TableroList tableros={espacio.tableros} />
+    <div className={cl.espacio}>
+      <div className={cl.espacio__inner}>
+        {editMode ? (
+          <form
+            className={cl.espacio__form}
+            onSubmit={handleChangeTitle}
+          >
+            <MyInput
+              value={nombreEspacio}
+              autoFocus={true}
+              onBlur={handleEditClose}
+              onChange={(e) => setEspacioTitle}
+              className={cl.espacio__input}
+            />
+          </form>
+        ) : (
+          renderEspacioContainer()
+        )}
+      </div>
     </div>
   );
 };
