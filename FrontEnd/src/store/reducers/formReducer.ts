@@ -4,6 +4,7 @@ const initialState: FormState = {
 	inputValue: "",
 	isOpen: false,
 	isError: false,
+	descripcionValue: "",
 };
 
 export const formReducer = (
@@ -11,6 +12,11 @@ export const formReducer = (
 	action: FormAction
 ): FormState => {
 	switch (action.type) {
+		case FormActionTypes.SET_DESCRIPCION_VALUE: 
+			return {
+			  ...state,
+			  descripcionValue: action.payload, // Actualiza el estado de la descripción
+			};
 		case FormActionTypes.OPEN_FORM:
 			return {
 				...state,

@@ -1,12 +1,7 @@
-/*ubicación y diseño del botón de crear tablero*/
 .container {
 	width: 27rem;
-	padding-bottom:750px;
-	padding-right: 50px;
-	padding-top: 700px;
 }
 
-/*este ya es al dar click*/
 .tableroForm {
 	display: flex;
 	flex-direction: column;
@@ -64,7 +59,7 @@
 		letter-spacing: 0.2rem;
 		text-transform: uppercase;
 
-		background-color: #5b70be;
+		background-color: #fdc500;
 		border-radius: 1rem;
 
 		transition: box-shadow 0.2s linear;
@@ -78,13 +73,9 @@
 .openBtn {
 	width: 100%;
 	padding: 2rem 0;
-	background-color: #3f39ae; /*botón de crear tablero*/
-	border-radius: 1rem;
-	cursor: pointer;
 
 	&__title {
 		margin: 0;
-		color: #fff; /*color letra del botón*/
 	}
 
 	&::before {
@@ -95,7 +86,7 @@
 		width: 0;
 		height: 0.5rem;
 
-		background-color: #7C84AE;
+		background-color: #ff220f;
 		border-radius: 1rem;
 		transform: translateX(-50%);
 

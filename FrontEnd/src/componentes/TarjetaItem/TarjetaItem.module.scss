@@ -46,6 +46,18 @@
 			background-color: rgba(0, 0, 0, 0.1);
 		}
 	}
+	&__desc {
+		margin: 0;
+		padding: 0.5rem;
+
+		word-break: break-all;
+
+		border-radius: 0.5rem;
+
+		transition: background-color 0.2s ease-in;
+
+		color: grey;
+	}
 
 	&__form {
 		display: flex;

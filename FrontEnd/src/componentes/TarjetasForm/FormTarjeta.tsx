@@ -12,7 +12,7 @@ interface TarjetaFormProps {
 }
 
 const TarjetaForm: FC<TarjetaFormProps> = ({ tableroID }) => {
-	const { inputValue, isOpen, isError } = useTypedSelector(
+	const { inputValue, descripcionValue, isOpen, isError } = useTypedSelector(
 		(state) => state.form
 	);
 	const {
@@ -20,6 +20,7 @@ const TarjetaForm: FC<TarjetaFormProps> = ({ tableroID }) => {
 		submitFormCancel,
 		openForm,
 		setInputValue,
+		setDescripcionValue,
 		addTarjeta,
 		submitFormError,
 	} = useActions();
@@ -30,9 +31,11 @@ const TarjetaForm: FC<TarjetaFormProps> = ({ tableroID }) => {
 				tableroID,
 				id: String(Date.now()),
 				nombre_tarjeta: inputValue,
+				descripcion: descripcionValue,
 			});
 			submitFormSuccess();
 			setInputValue("");
+			setDescripcionValue("");
 		} else {
 			submitFormError();
 		}
@@ -46,6 +49,7 @@ const TarjetaForm: FC<TarjetaFormProps> = ({ tableroID }) => {
 				<form className={cl.tarjetaForm} onSubmit={handleFormSubmit}>
 					<div className={cl.tarjetaForm__body}>
 						<MyPointer isError={isError}>Coloca un nombre a tu tarjeta</MyPointer>
+						<p>Nombre Tarjeta</p>
 						<MyInput
 							className={cl.tarjetaForm__input}
 							// eslint-disable-next-line jsx-a11y/no-autofocus
@@ -53,6 +57,13 @@ const TarjetaForm: FC<TarjetaFormProps> = ({ tableroID }) => {
 							value={inputValue}
 							onChange={setInputValue}
 						/>
+
+						<p>Descripción</p>
+						<MyInput
+							className={cl.tarjetaForm__input}
+							value={descripcionValue}
+							onChange= {setDescripcionValue}
+						/>				
 					</div>
 
 					<div className={cl.tarjetaForm__footer}>

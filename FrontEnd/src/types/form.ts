@@ -1,5 +1,6 @@
 export interface FormState {
 	inputValue: string;
+	descripcionValue: string;
 	isOpen: boolean;
 	isError: boolean;
 }
@@ -7,6 +8,7 @@ export interface FormState {
 export enum FormActionTypes {
 	OPEN_FORM = "OPEN_FORM",
 	SET_INPUT_VALUE = "SET_INPUT_VALUE",
+	SET_DESCRIPCION_VALUE = "SET_DESCRIPCION_VALUE",
 	SUBMIT_FORM_SUCCESS = "SUBMIT_FORM_SUCCESS",
 	SUBMIT_FORM_ERROR = "SUBMIT_FORM_ERROR",
 	SUBMIT_FORM_CANCEL = "SUBMIT_FORM_CANCEL",
@@ -18,6 +20,11 @@ interface OpenFormAction {
 
 interface SetInputValueAction {
 	type: FormActionTypes.SET_INPUT_VALUE;
+	payload: string;
+}
+
+interface SetDescripcionValueAction {
+	type: FormActionTypes.SET_DESCRIPCION_VALUE;
 	payload: string;
 }
 
@@ -37,5 +44,6 @@ export type FormAction =
 	| OpenFormAction
 	| SetInputValueAction
 	| SubmitFormSuccessAction
+	| SetDescripcionValueAction	
 	| SubmitFormErrorAction
 	| SubmitFormCancelAction;

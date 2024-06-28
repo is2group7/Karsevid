@@ -10,11 +10,12 @@ export const tarjetaReducer = (
 ): TarjetaState => {
 	switch (action.type) {
 		case TarjetaActionTypes.ADD_TARJETA: {
-			const { tableroID, tarjetaID, nombre_tarjeta } = action.payload;
+			const { tableroID, tarjetaID, nombre_tarjeta, descripcion } = action.payload;
 			const nuevaTarjeta = {
 				tableroID,
 				id: tarjetaID,
 				nombre_tarjeta,
+				descripcion,
 				tareas: [],
 			};
 
@@ -116,6 +117,14 @@ export const tarjetaReducer = (
 				};
 			}
 		}
+		case TarjetaActionTypes.CAMBIAR_DESCRIPCION_TARJETA: {  
+			const { tarjetaID, descripcion } = action.payload;
+			const tarjeta = state.tarjetas[tarjetaID];
+
+			tarjeta.descripcion = descripcion;
+
+			return { ...state, tarjetas: { ...state.tarjetas, [tarjetaID]: tarjeta } };
+		}		
 		default:
 			return state;
 	}

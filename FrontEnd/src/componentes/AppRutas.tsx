@@ -1,5 +1,5 @@
 import React from "react";
-import { routes } from "../rutas/index";
+import { routes } from "../rutas/index" 
 import { Switch, Route, Redirect } from "react-router";
 
 const RutasApp = () => {

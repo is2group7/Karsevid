@@ -1,6 +1,8 @@
+import { InterfazEspacio } from "../types/espacios";
 import { IntefazTablero } from "../types/tablero";
 import { InterfazTarea } from "../types/tarea";
 import { InterfazTarjeta } from "../types/tarjeta";
+import { InterfazUsuario } from "../types/usuario";
 
 export const getState = () => {
 	try {
@@ -21,16 +23,22 @@ export const setState = ({
 	tableros,
 	tarjetas,
 	tareas,
+	usuarios,
+	espacios,
 }: {
 	tableros: { [tableroID: string]: IntefazTablero };
 	tarjetas: { [tarjetaID: string]: InterfazTarjeta };
 	tareas: { [tareaID: string]: InterfazTarea };
+	usuarios: {[usuarioID: string]: InterfazUsuario}
+	espacios: {[espacioID: string]: InterfazEspacio}
 }) => {
 	try {
 		const localStorageCollection = {
             tableros,
             tarjetas,
             tareas,
+			usuarios,
+			espacios,
 		};
 		localStorage.setItem(
 			"boardsCollection",
@@ -40,3 +48,6 @@ export const setState = ({
 		throw e;
 	}
 };
+
+
+  
