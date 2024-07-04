@@ -9,7 +9,7 @@ export interface InterfazTarea {
     descripcion: string;
     fechaCreacion: Date;
     fechaVencimiento: Date;
-    usuariosAsignado: string;
+    usuariosAsignado: string[];
     miniTareas: string[];
     tareaFinalizada: boolean;
     maxMiniTareas: number;
@@ -60,7 +60,7 @@ interface AddTareaAction {
 		descripcion: string;
 		fechaCreacion: Date;
 		fechaVencimiento: Date;
-		usuariosAsignado: string;
+		usuariosAsignado: string[];
 		miniTareas: string[];
 		tareaFinalizada: boolean;
 		maxMiniTareas: number;

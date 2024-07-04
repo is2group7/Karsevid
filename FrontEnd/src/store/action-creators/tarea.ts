@@ -9,7 +9,7 @@ export const addTarea = ({
 	descripcion,
 	fechaCreacion,
 	fechaVencimiento,
-	usuariosAsignado,
+	usuariosAsignado= [],
 	miniTareas = [],
 	tareaFinalizada = false,
 	maxMiniTareas

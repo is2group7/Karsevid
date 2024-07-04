@@ -5,6 +5,9 @@ const initialState: FormState = {
 	isOpen: false,
 	isError: false,
 	descripcionValue: "",
+	fechaCreacion: "",
+    fechaVencimiento: "",
+    usuarioAsignado: "",
 };
 
 export const formReducer = (
@@ -15,7 +18,7 @@ export const formReducer = (
 		case FormActionTypes.SET_DESCRIPCION_VALUE: 
 			return {
 			  ...state,
-			  descripcionValue: action.payload, // Actualiza el estado de la descripción
+			  descripcionValue: action.payload, 
 			};
 		case FormActionTypes.OPEN_FORM:
 			return {
@@ -39,6 +42,16 @@ export const formReducer = (
 				...state,
 				isError: true,
 			};
+		case FormActionTypes.SET_FECHA_CREACION:
+			return { ...state, 
+				fechaCreacion: action.payload };
+		case FormActionTypes.SET_FECHA_VENCIMIENTO:
+			return { ...state, 
+				fechaVencimiento: action.payload };
+		case FormActionTypes.SET_USUARIO_ASIGNADO:
+			return { ...state, 
+				usuarioAsignado: action.payload };
+
 		case FormActionTypes.SUBMIT_FORM_CANCEL:
 			return {
 				...state,
