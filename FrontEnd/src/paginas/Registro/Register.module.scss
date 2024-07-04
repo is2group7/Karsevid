@@ -66,13 +66,13 @@
 
 .botonregistrar {
   padding: 1rem 2rem;
-  background-color: rgba(0, 0, 0, 0.03);
+  color: white;
+  background-color:  #00296b;
   border-radius: 0.5rem;
   transition: box-shadow 0.1s ease-in, transform 0.1s ease-in;
 
     &:hover {
         box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.5);
-
         transform: scale(1.05);
     }
 }

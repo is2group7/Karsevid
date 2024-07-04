@@ -1,4 +1,4 @@
-import { table } from "console";
+//tableroReducer.ts
 import { TableroAction, TableroActionTypes, TableroState } from "../../types/tablero";
 
 const initialState: TableroState = {

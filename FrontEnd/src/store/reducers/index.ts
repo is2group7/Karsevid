@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { espacioReducer } from "./espacioReducer";
-import {usuarioReducer} from "./usuarioReducer";
+import { usuarioReducer } from "./usuarioReducer";
 import { tableroReducer } from "./tableroReducer"; 
 import { tareaReducer } from "./tareaReducer"; 
 import { formReducer } from "./formReducer"; 

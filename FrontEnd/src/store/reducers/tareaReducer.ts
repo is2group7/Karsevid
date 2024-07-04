@@ -1,3 +1,4 @@
+//tareaReducer.ts
 import { TareaAction, TareaActionTypes, EstadoTarea } from "../../types/tarea";
 
 const initialState: EstadoTarea = {

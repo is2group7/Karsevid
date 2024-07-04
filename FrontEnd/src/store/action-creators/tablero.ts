@@ -1,5 +1,5 @@
+//tableroActionCreator.ts
 import { TableroAction, TableroActionTypes, IntefazTablero } from "../../types/tablero";
-
 
 export const addTablero = ({
 	id: tableroID,
@@ -14,9 +14,13 @@ export const addTablero = ({
   };
 
 
+
 export const eliminarTablero = ({ tableroID }: { tableroID: string }): TableroAction => {
 	return { type: TableroActionTypes.ELIMINAR_TABLERO, payload: { tableroID } };
 };
+
+
+
 
 export const cambiarNombreTablero = ({
 	id: tableroID,

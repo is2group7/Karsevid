@@ -1,3 +1,4 @@
+//tableroType.ts
 import { IDragAndDrop } from "./dragAndDrop";
 
 export interface IntefazTablero {

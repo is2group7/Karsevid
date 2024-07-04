@@ -22,6 +22,7 @@ const TableroForm: FC<TableroFormProps> = ({ espacioID }) => {
           setInputValue,
           submitFormError,
           addTablero,
+          addTarjeta,
           addTableroToEspacio } = useActions();
 
   const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -30,6 +31,23 @@ const TableroForm: FC<TableroFormProps> = ({ espacioID }) => {
       const tableroID = String(Date.now());
       addTablero({ id: tableroID, nombre_tablero: inputValue, espacioID });
       addTableroToEspacio({ espacioID, tableroID });
+
+      const tarjetasIniciales = [
+        { nombre_tarjeta: 'Por Hacer', descripcion: 'Tareas pendientes' },
+        { nombre_tarjeta: 'Haciendo', descripcion: 'Tareas en proceso' },
+        { nombre_tarjeta: 'Hecho', descripcion: 'Tareas completadas' },
+      ];
+
+      tarjetasIniciales.forEach(tarjeta => {
+        const tarjetaID = String(Date.now() + Math.random() + 'Predefinidas'); 
+        addTarjeta({
+          tableroID,
+          id: tarjetaID,
+          nombre_tarjeta: tarjeta.nombre_tarjeta,
+          descripcion: tarjeta.descripcion,
+        });
+      });
+
       submitFormSuccess();
     } else {
       submitFormError();
