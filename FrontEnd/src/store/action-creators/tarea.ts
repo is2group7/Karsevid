@@ -6,10 +6,29 @@ export const addTarea = ({
 	tarjetaID,
 	id: tareaID,
 	nombre_tarea,
+	descripcion,
+	fechaCreacion,
+	fechaVencimiento,
+	usuariosAsignado,
+	miniTareas = [],
+	tareaFinalizada = false,
+	maxMiniTareas
 }: InterfazTarea): TareaAction => {
 	return {
 		type: TareaActionTypes.ADD_TAREA,
-		payload: { tableroID, tarjetaID, tareaID, nombre_tarea },
+		payload: {
+			tableroID,
+			tarjetaID,
+			tareaID,
+			nombre_tarea,
+			descripcion,
+			fechaCreacion,
+			fechaVencimiento,
+			usuariosAsignado,
+			miniTareas,
+			tareaFinalizada,
+			maxMiniTareas
+		}
 	};
 };
 
@@ -24,6 +43,45 @@ export const eliminarTarea = ({
 		type: TareaActionTypes.ELIMINAR_TAREA,
 		payload: { tarjetaID, tareaID },
 	};
+};
+
+export const addMiniTarea = ({
+    tareaID,
+    miniTareaID
+}: {
+    tareaID: string;
+    miniTareaID: string;
+}): TareaAction => {
+    return {
+        type: TareaActionTypes.ADD_MINI_TAREA,
+        payload: { tareaID, miniTareaID }
+    };
+};
+
+export const updateMaxMiniTareas = ({
+    tareaID,
+    maxMiniTareas
+}: {
+    tareaID: string;
+    maxMiniTareas: number;
+}): TareaAction => {
+    return {
+        type: TareaActionTypes.UPDATE_MAX_MINI_TAREAS,
+        payload: { tareaID, maxMiniTareas }
+    };
+};
+
+export const eliminarMiniTarea = ({
+    tareaID,
+    miniTareaID
+}: {
+    tareaID: string;
+    miniTareaID: string;
+}): TareaAction => {
+    return {
+        type: TareaActionTypes.ELIMINAR_MINI_TAREA,
+        payload: { tareaID, miniTareaID }
+    };
 };
 
 export const finalizarTarea = ({ id: tareaID }: { id: string }): TareaAction => {

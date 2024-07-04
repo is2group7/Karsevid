@@ -1,11 +1,18 @@
 import { IDragAndDrop } from "./dragAndDrop";
 
+
 export interface InterfazTarea {
-	tableroID: string;
-	tarjetaID: string;
-	id: string;
-	nombre_tarea: string;
-	tareaFinalizada: boolean; 
+    tableroID: string;
+    tarjetaID: string;
+    id: string;
+    nombre_tarea: string;
+    descripcion: string;
+    fechaCreacion: Date;
+    fechaVencimiento: Date;
+    usuariosAsignado: string;
+    miniTareas: string[];
+    tareaFinalizada: boolean;
+    maxMiniTareas: number;
 }
 
 export interface EstadoTarea {
@@ -16,6 +23,9 @@ export interface EstadoTarea {
 
 export enum TareaActionTypes {
 	ADD_TAREA = "ADD_TAREA",
+	ADD_MINI_TAREA = "ADD_MINI_TAREA",
+	ELIMINAR_MINI_TAREA = "ELIMINAR_MINI_TAREA",
+	UPDATE_MAX_MINI_TAREAS = "UPDATE_MAX_MINI_TAREAS",
 	ELIMINAR_TAREA = "ELIMINAR_TAREA",
 	FINALIZAR_TAREA = "FINALIZAR_TAREA",
 	CAMBIAR_NOMBRE_TAREA = "CAMBIAR_NOMBRE_TAREA",
@@ -25,9 +35,36 @@ export enum TareaActionTypes {
 	DRAG_DROP = "DRAG_DROP",
 }
 
+interface AddMiniTareaAction {
+    type: TareaActionTypes.ADD_MINI_TAREA;
+    payload: { tareaID: string; miniTareaID: string };
+}
+
+interface EliminarMiniTareaAction {
+	type: TareaActionTypes.ELIMINAR_MINI_TAREA;
+	payload: { tareaID: string; miniTareaID: string };
+}
+
+interface UpdateMaxMiniTareasAction {
+    type: TareaActionTypes.UPDATE_MAX_MINI_TAREAS;
+    payload: { tareaID: string; maxMiniTareas: number };
+}
+
 interface AddTareaAction {
 	type: TareaActionTypes.ADD_TAREA;
-	payload: { tableroID: string; tarjetaID: string; tareaID: string; nombre_tarea: string };
+	payload: {
+		tableroID: string;
+		tarjetaID: string;
+		tareaID: string;
+		nombre_tarea: string;
+		descripcion: string;
+		fechaCreacion: Date;
+		fechaVencimiento: Date;
+		usuariosAsignado: string;
+		miniTareas: string[];
+		tareaFinalizada: boolean;
+		maxMiniTareas: number;
+	};
 }
 
 interface EliminarTareaAction {
@@ -66,6 +103,9 @@ interface DragAndDropAction {
 }
 
 export type TareaAction =
+	| AddMiniTareaAction
+	| UpdateMaxMiniTareasAction
+	| EliminarMiniTareaAction
 	| AddTareaAction
 	| EliminarTareaAction
 	| FinalizarTareaAction

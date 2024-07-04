@@ -1,5 +1,5 @@
 //tareaReducer.ts
-import { TareaAction, TareaActionTypes, EstadoTarea } from "../../types/tarea";
+import { TareaAction, TareaActionTypes, EstadoTarea, InterfazTarea } from "../../types/tarea";
 
 const initialState: EstadoTarea = {
 	tareas: {},
@@ -10,29 +10,62 @@ export const tareaReducer = (
 	action: TareaAction
 ): EstadoTarea => {
 	switch (action.type) {
-		case TareaActionTypes.ADD_TAREA: {
-			const { tableroID, tarjetaID, tareaID, nombre_tarea } = action.payload;
-			const nuevaTarea = {
-				tableroID,
-				tarjetaID,
-				id: tareaID,
-				nombre_tarea,
-				tareaFinalizada: false,
-			};
+        case TareaActionTypes.ADD_TAREA: {
+            const { tableroID, tarjetaID, tareaID, nombre_tarea, descripcion, 
+			fechaCreacion, fechaVencimiento, usuariosAsignado, miniTareas, tareaFinalizada, maxMiniTareas } = action.payload;
+            const nuevaTarea = {
+                tableroID,
+                tarjetaID,
+                id: tareaID,
+                nombre_tarea,
+                descripcion,
+                fechaCreacion,
+                fechaVencimiento,
+                usuariosAsignado,
+                miniTareas,
+                tareaFinalizada,
+                maxMiniTareas
+            };
 
-			return {
-				...state,
-				tareas: { ...state.tareas, [tareaID]: nuevaTarea },
-			};
-		}
-		case TareaActionTypes.ELIMINAR_TAREA: {
-			const { tarjetaID, tareaID } = action.payload;
-			const tareas = { ...state.tareas };
-
-			if (tareas[tareaID].tarjetaID === tarjetaID) delete tareas[tareaID];
-
-			return { ...state, tareas };
-		}
+            return {
+                ...state,
+                tareas: { ...state.tareas, [tareaID]: nuevaTarea },
+            };
+        }
+		case TareaActionTypes.ADD_MINI_TAREA: {
+            const { tareaID, miniTareaID } = action.payload;
+            const tarea = state.tareas[tareaID];
+            if (tarea && tarea.miniTareas.length < tarea.maxMiniTareas) {
+                return {
+                    ...state,
+                    tareas: {
+                        ...state.tareas,
+                        [tareaID]: {
+                            ...tarea,
+                            miniTareas: [...tarea.miniTareas, miniTareaID]
+                        }
+                    }
+                };
+            }
+            return state; 
+        }
+        case TareaActionTypes.UPDATE_MAX_MINI_TAREAS: {
+            const { tareaID, maxMiniTareas } = action.payload;
+            const tarea = state.tareas[tareaID];
+            if (tarea) {
+                return {
+                    ...state,
+                    tareas: {
+                        ...state.tareas,
+                        [tareaID]: {
+                            ...tarea,
+                            maxMiniTareas
+                        }
+                    }
+                };
+            }
+            return state;
+        }
 		case TareaActionTypes.FINALIZAR_TAREA: {
 			const { tareaID } = action.payload;
 			const tarea = state.tareas[tareaID];
@@ -74,6 +107,14 @@ export const tareaReducer = (
 			return { ...state, tareas: Object.fromEntries(nuevaTarea) };
 		}
 
+		case TareaActionTypes.ELIMINAR_TAREA: {
+			const { tarjetaID, tareaID } = action.payload;
+			const tareas = { ...state.tareas };
+
+			if (tareas[tareaID].tarjetaID === tarjetaID) delete tareas[tareaID];
+
+			return { ...state, tareas };
+		}
 
 		case TareaActionTypes.ELIMINAR_TABLERO: {
 			const { tableroID } = action.payload;
