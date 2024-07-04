@@ -5,7 +5,7 @@ export interface InterfazTarea {
 	tarjetaID: string;
 	id: string;
 	nombre_tarea: string;
-	tareaFinalizada: boolean; //cod_estado 
+	tareaFinalizada: boolean; 
 }
 
 export interface EstadoTarea {

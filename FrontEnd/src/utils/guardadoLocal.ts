@@ -3,6 +3,7 @@ import { IntefazTablero } from "../types/tablero";
 import { InterfazTarea } from "../types/tarea";
 import { InterfazTarjeta } from "../types/tarjeta";
 import { InterfazUsuario } from "../types/usuario";
+import { InterfazMiniTarea } from "../types/minitarea";
 
 // Modifica la URL de la API según corresponda
 const API_URL = 'https://192.168.100.155:8000/api/tableros/listar?cod_espacio=5';
@@ -52,12 +53,14 @@ export const setState = ({
 	tareas,
 	usuarios,
 	espacios,
+	miniTarea,
 }: {
 	tableros: { [tableroID: string]: IntefazTablero };
 	tarjetas: { [tarjetaID: string]: InterfazTarjeta };
 	tareas: { [tareaID: string]: InterfazTarea };
 	usuarios: {[usuarioID: string]: InterfazUsuario}
 	espacios: {[espacioID: string]: InterfazEspacio}
+	miniTarea: {[miniTareaID: string]: InterfazMiniTarea}
 }) => {
 	try {
 		const localStorageCollection = {
@@ -66,6 +69,7 @@ export const setState = ({
             tareas,
 			usuarios,
 			espacios,
+			miniTarea,
 		};
 		localStorage.setItem(
 			"boardsCollection",

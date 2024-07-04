@@ -4,6 +4,8 @@ import * as TarjetaActionCreators from "./tarjeta";
 import * as TareaActionCreators from "./tarea"; 
 import * as EspacioActionCreators from "./espacio"; 
 import * as UsuarioActionCreators from "./usuario";
+import * as MiniTareaAction from "./minitarea";
+
 
 export default {
 	...TableroActionCreators,
@@ -12,4 +14,5 @@ export default {
 	...TareaActionCreators,
 	...EspacioActionCreators,
 	...UsuarioActionCreators,
+	...MiniTareaAction,
 };

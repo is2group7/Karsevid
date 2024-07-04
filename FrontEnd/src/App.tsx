@@ -13,6 +13,7 @@ const App: FC = () => {
 	const { tareas } = useTypedSelector((state) => state.tarea);
 	const { usuarios } = useTypedSelector((state) => state.usuario);
 	const { espacios } = useTypedSelector((state) => state.espacio);
+	const { miniTareas } = useTypedSelector((state) => state.miniTarea)
 	const { setTablero, setTarjeta, setTarea, setUsuario, setEspacio } = useActions();
 
 	useEffect(() => {
