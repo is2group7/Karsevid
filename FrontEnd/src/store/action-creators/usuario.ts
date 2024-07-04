@@ -1,30 +1,20 @@
 import { UsuarioAction, UsuarioActionTypes, InterfazUsuario } from "../../types/usuario";
-import api from '../../utils/api';
 
 export const addUsuario = ({
   id: usuarioID,
   nombre,
   email,
   password,
-}) => async (dispatch) => {
-  const response = await api.post('/registro', {
-    usuario: nombre,
-    nombres: nombre,
-    apellidos: nombre, 
-    correo: email,
-    password: password,
-  });
-
-  if (response.status === 200){
-    console.log("No hubo error", response.data);
-  }else{
-    console.error("Hay error", response.data);
-  }
-
-  dispatch({
+}: {
+  id: string;
+  nombre: string;
+  email: string;
+  password: string;
+}): UsuarioAction => {
+  return {
     type: UsuarioActionTypes.ADD_USUARIO,
-    payload: { usuarioID: response.data.id, nombre, email, password },
-  });
+    payload: { usuarioID, nombre, email, password },
+  };
 };
 
 export const eliminarUsuario = ({
@@ -53,27 +43,16 @@ export const setUsuario = (usuarios: { [usuarioID: string]: InterfazUsuario }): 
 };
 
 export const loginUsuario = ({
-  usuario,
+  email,
   password,
-}) => async (dispatch) => {
-  const response = await api.post('/autenticar', {
-    usuario: usuario,
-    password: password,
-  });
-
-  if (response.status === 200){
-    if (response.data.codigo === 0){
-      localStorage.setItem('session_id', response.data.mensaje);
-      dispatch({
-        type: UsuarioActionTypes.LOGIN_USUARIO,
-        payload: { usuario, password },
-      });
-    }else{
-      console.log("Credenciales inválidas!!");
-    }
-  }else{
-    console.error("Hay error", response.data);
-  }
+}: {
+  email: string;
+  password: string;
+}): UsuarioAction => {
+  return {
+    type: UsuarioActionTypes.LOGIN_USUARIO,
+    payload: { email, password },
+  };
 };
 
 export const logoutUsuario = (): UsuarioAction => {

@@ -1,5 +1,4 @@
 import { EspacioAction, InterfazEspacio, EspacioActionTypes } from "../../types/espacios";
-import api from '../../utils/api';
 
 export const addEspacio = ({
   id: espacioID,
@@ -61,18 +60,4 @@ export const removeTableroFromEspacio = ({
   tableroID: string;
 }): EspacioAction => {
   return { type: EspacioActionTypes.REMOVE_TABLERO_FROM_ESPACIO, payload: { espacioID, tableroID } };
-};
-
-export const listEspaciosUsuario = () => async (dispatch) => {
-  try {
-    const response = await api.get('/espacios/listar'); 
-    const espacios = response.data; 
-    
-    dispatch({
-      type: EspacioActionTypes.SET_ESPACIO,
-      payload: espacios,
-    });
-  } catch (error) {
-    console.error('Error al obtener los espacios de trabajo:', error);
-  }
 };

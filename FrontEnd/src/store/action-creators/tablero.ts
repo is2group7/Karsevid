@@ -1,14 +1,18 @@
 import { TableroAction, TableroActionTypes, IntefazTablero } from "../../types/tablero";
 
+
 export const addTablero = ({
 	id: tableroID,
 	nombre_tablero,
-}: {
+	espacioID
+  }: {
 	id: string;
 	nombre_tablero: string;
-}): TableroAction => {
-	return { type: TableroActionTypes.ADD_TABLERO, payload: { tableroID, nombre_tablero } };
-};
+	espacioID: string;
+  }): TableroAction => {
+	return { type: TableroActionTypes.ADD_TABLERO, payload: { tableroID, nombre_tablero, espacioID } };
+  };
+
 
 export const eliminarTablero = ({ tableroID }: { tableroID: string }): TableroAction => {
 	return { type: TableroActionTypes.ELIMINAR_TABLERO, payload: { tableroID } };

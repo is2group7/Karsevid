@@ -11,18 +11,19 @@ export const tableroReducer = (
 ): TableroState => {
 	switch (action.type) {
 		case TableroActionTypes.ADD_TABLERO: {
-			const { tableroID, nombre_tablero } = action.payload;
+			const { tableroID, nombre_tablero, espacioID } = action.payload;
 			const nuevoTablero = {
-				id: tableroID,
-				nombre_tablero,
-				tarjeta: [],
+			  id: tableroID,
+			  nombre_tablero,
+			  tarjeta: [],
+			  espacioID, 
 			};
-
+	  
 			return {
-				...estado,
-				tableros: { ...estado.tableros, [tableroID]: nuevoTablero },
+			  ...estado,
+			  tableros: { ...estado.tableros, [tableroID]: nuevoTablero },
 			};
-		}
+		  }
 
 		case TableroActionTypes.ELIMINAR_TABLERO: {
 			const { tableroID } = action.payload;
