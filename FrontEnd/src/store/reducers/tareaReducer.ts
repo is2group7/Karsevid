@@ -1,4 +1,3 @@
-//tareaReducer.ts
 import { TareaAction, TareaActionTypes, EstadoTarea, InterfazTarea } from "../../types/tarea";
 
 const initialState: EstadoTarea = {
@@ -106,6 +105,24 @@ export const tareaReducer = (
 
 			return { ...state, tareas: Object.fromEntries(nuevaTarea) };
 		}
+		case TareaActionTypes.ELIMINAR_MINI_TAREA_DE_TAREA: {
+			const { tareaID, miniTareaID } = action.payload;
+			const tarea = state.tareas[tareaID];
+			if (tarea) {
+				const updatedMiniTareas = tarea.miniTareas.filter(id => id !== miniTareaID);
+				return {
+					...state,
+					tareas: {
+						...state.tareas,
+						[tareaID]: {
+							...tarea,
+							miniTareas: updatedMiniTareas
+						}
+					}
+				};
+			}
+			return state;
+		}	
 
 		case TareaActionTypes.ELIMINAR_TAREA: {
 			const { tarjetaID, tareaID } = action.payload;

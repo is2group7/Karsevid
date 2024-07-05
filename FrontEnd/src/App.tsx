@@ -3,6 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import RutasApp from "./componentes/AppRutas"; 
 import { useActions } from "./hooks/useActions";
 import { useTypedSelector } from "./hooks/useTypedSelector";
+import { Toaster } from 'react-hot-toast';
 import { getState, setState } from "./utils/guardadoLocal"; 
 import "./styles/App.scss"; 
 
@@ -41,6 +42,7 @@ const App: FC = () => {
 			<BrowserRouter>
 				<RutasApp/>
 			</BrowserRouter>
+			<Toaster />
 		</div>
 	);
 };

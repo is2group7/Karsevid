@@ -51,6 +51,10 @@
 
 	transition: box-shadow 0.1s ease-in, background-color 0.1s ease-in;
 
+	&.overdue {
+        background-color: #ee8282; 
+    }
+
 	&__inner {
 		position: relative;
 

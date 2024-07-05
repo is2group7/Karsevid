@@ -1,6 +1,5 @@
 import { IDragAndDrop } from "./dragAndDrop";
 
-
 export interface InterfazTarea {
     tableroID: string;
     tarjetaID: string;
@@ -32,6 +31,7 @@ export enum TareaActionTypes {
 	SET_TAREA = "SET_TAREA",
 	ELIMINAR_TARJETA = "ELIMINAR_TARJETA",
 	ELIMINAR_TABLERO = "ELIMINAR_TABLERO",
+	ELIMINAR_MINI_TAREA_DE_TAREA = "ELIMINAR_MINI_TAREA_DE_TAREA",
 	DRAG_DROP = "DRAG_DROP",
 }
 
@@ -40,8 +40,8 @@ interface AddMiniTareaAction {
     payload: { tareaID: string; miniTareaID: string };
 }
 
-interface EliminarMiniTareaAction {
-	type: TareaActionTypes.ELIMINAR_MINI_TAREA;
+interface EliminarMiniTareaDeTareaAction {
+	type: TareaActionTypes.ELIMINAR_MINI_TAREA_DE_TAREA;
 	payload: { tareaID: string; miniTareaID: string };
 }
 
@@ -105,7 +105,7 @@ interface DragAndDropAction {
 export type TareaAction =
 	| AddMiniTareaAction
 	| UpdateMaxMiniTareasAction
-	| EliminarMiniTareaAction
+	| EliminarMiniTareaDeTareaAction
 	| AddTareaAction
 	| EliminarTareaAction
 	| FinalizarTareaAction

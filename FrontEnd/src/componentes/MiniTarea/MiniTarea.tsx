@@ -21,7 +21,7 @@ interface MiniTareaProps {
 }
 
 const MiniTarea: FC<MiniTareaProps> = ({ miniTarea, index }) => {
-	const { finalizarMiniTarea, eliminarMiniTarea, cambiarNombreMiniTarea } = useActions();
+	const { finalizarMiniTarea, eliminarMiniTarea, eliminarMiniTareaDeTarea, cambiarNombreMiniTarea } = useActions();
 	const [editMode, setEditMode] = useState(false);
 	const [nombre_mt, setNombre] = useState(miniTarea.nombre);
 
@@ -47,6 +47,11 @@ const MiniTarea: FC<MiniTareaProps> = ({ miniTarea, index }) => {
 		}
 	};
 
+	const handleDelete = () => {
+		eliminarMiniTarea(miniTarea.id);
+		eliminarMiniTareaDeTarea({ tareaID: miniTarea.tareaID, miniTareaID: miniTarea.id });
+	};
+
 	const handleEditOpen = () => {
 		if (!miniTarea.completada) setEditMode(true);
 	};
@@ -60,7 +65,8 @@ const MiniTarea: FC<MiniTareaProps> = ({ miniTarea, index }) => {
 		return (
 			<div className={cl.iconContainer}>
 				<TiArrowBack className={classNames(cl.icon, cl.icon_return)} />
-				<BotonPrincipal onClick={() => eliminarMiniTarea(miniTarea.id)}>
+				<BotonPrincipal onClick={handleDelete}>
+
 					<MdDelete className={classNames(cl.icon, cl.icon_remove)} />
 				</BotonPrincipal>
 			</div>

@@ -12,3 +12,25 @@
         border-radius: 4px; 
     }
 }
+
+.botonAgregar {
+    background-color: #007bff;  
+    color: #ffffff;            
+    border: solid;              
+    padding: 10px 20px;         
+    font-size: 1.5rem;            
+    font-weight: bold;          
+    border-radius: 5px;         
+    cursor: pointer;            
+    transition: background-color 0.3s ease, transform 0.3s ease;  
+  
+    &:hover {
+      background-color: #4c83be;  
+      transform: scale(1.05);     
+    }
+  
+    &:focus {
+      outline: none;              
+    }
+  }
+  

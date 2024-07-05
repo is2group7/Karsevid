@@ -71,17 +71,17 @@ export const updateMaxMiniTareas = ({
     };
 };
 
-export const eliminarMiniTarea = ({
-    tareaID,
-    miniTareaID
+export const eliminarMiniTareaDeTarea = ({
+	tareaID,
+	miniTareaID
 }: {
-    tareaID: string;
-    miniTareaID: string;
+	tareaID: string;
+	miniTareaID: string;
 }): TareaAction => {
-    return {
-        type: TareaActionTypes.ELIMINAR_MINI_TAREA,
-        payload: { tareaID, miniTareaID }
-    };
+	return {
+		type: TareaActionTypes.ELIMINAR_MINI_TAREA_DE_TAREA,
+		payload: { tareaID, miniTareaID }
+	};
 };
 
 export const finalizarTarea = ({ id: tareaID }: { id: string }): TareaAction => {

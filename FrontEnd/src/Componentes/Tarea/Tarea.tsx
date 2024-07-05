@@ -1,4 +1,4 @@
-import React, { FC, FormEvent, useState } from "react";
+import React, { FC, FormEvent, useState, useEffect } from "react";
 import { Draggable, DraggableStateSnapshot, DraggingStyle, NotDraggingStyle } from "react-beautiful-dnd";
 import { InterfazTarea } from "../../types/tarea";
 import BotonPrincipal from "../InterfazGrafica/boton/BotonPrincipal/BotonPrincipal";
@@ -10,8 +10,9 @@ import { useActions } from "../../hooks/useActions";
 import MyInput from "../InterfazGrafica/input/MyInput";
 import { validate } from "../../utils/validacion";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import MiniTareaList from "../../componentes/MiniTarea/MiniTareaList"
+import MiniTareaList from "../../componentes/MiniTarea/MiniTareaList";
 import MiniTareaForm from "../MiniTarea/MiniTareaForm";
+import toast from 'react-hot-toast';
 
 interface TareaProps {
     tarea: InterfazTarea;
@@ -50,6 +51,16 @@ const Tarea: FC<TareaProps> = ({ tarea, index }) => {
         setCardTitle(tarea.nombre_tarea);
     };
 
+    
+    const isOverdue = new Date(tarea.fechaVencimiento) < new Date();
+
+    
+    useEffect(() => {
+        if (isOverdue) {
+            toast.error(`La tarea "${tarea.nombre_tarea}" está vencida.`);
+        }
+    }, [isOverdue, tarea.nombre_tarea]);
+
     const renderActionButtons = () => (
         <div className={cl.actionContainer}>
             <BotonPrincipal onClick={() => finalizarTarea({ id: tarea.id })} className={cl.tarea_btn}>
@@ -76,7 +87,11 @@ const Tarea: FC<TareaProps> = ({ tarea, index }) => {
         <Draggable draggableId={tarea.id} index={index}>
             {(provided, snapshot) => (
                 <div
-                    className={classNames(cl.tarea, tarea.tareaFinalizada ? cl.complete : "")}
+                    className={classNames(
+                        cl.tarea,
+                        tarea.tareaFinalizada ? cl.complete : "",
+                        isOverdue ? cl.overdue : ""
+                    )}
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
@@ -102,10 +117,9 @@ const Tarea: FC<TareaProps> = ({ tarea, index }) => {
                                                 ))}
                                             </ul>
                                         </div>
-                                        <h4>Tareas:</h4>
+                                        <h4>MiniTareas:</h4>
                                         <MiniTareaList miniTareaIDs={tarea.miniTareas} />
                                         <MiniTareaForm tareaID={tarea.id} /> 
-              
                                     </div>
                                 )}
                                 {renderActionButtons()}

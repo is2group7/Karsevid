@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import React, { FC } from "react";
-import { VscDebugDisconnect  } from "react-icons/vsc";
+import { VscDebugDisconnect, VscBook   } from "react-icons/vsc";
 import EspacioForm from "../../componentes/EspacioForm/EspacioForm";
 import EspacioList from "../../componentes/EspacioList/EspacioList";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
@@ -26,12 +26,20 @@ const Espacios: FC = () => {
   );
 
   return (
-    <div className={cl.container}>      
+    <div className={cl.container}>     
+
       <BotonPrincipal type="button" onClick={handleLogout} className={cl.icon}>
           <VscDebugDisconnect
             className={cl.espacioForm__icon}
           />
       </BotonPrincipal>
+
+      <Link to="/karsevidUsuarios">
+          <BotonPrincipal type="button" className={cl.crud}>
+              <VscBook className={cl.espacioForm__icon} />
+          </BotonPrincipal>
+      </Link>
+
       {filteredEspacios.length > 0 && (
         <div className={classNames(cl.row, cl.row_list)}>
           <EspacioList espacios={filteredEspacios} />
