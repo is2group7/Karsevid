@@ -1,25 +1,91 @@
 .container {
     padding: 20px;
-}
-
-.form {
-    display: flex;
-    flex-direction: column;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
     margin-bottom: 20px;
-}
-
-.list {
+  }
+  
+  .formContainer {
     display: flex;
     flex-direction: column;
-}
-
-.userItem {
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .formContainer input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .formContainer button {
+    position: relative;
+    left: 300px;
+    padding: 10px;
+    border: none;
+    width: 20%;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .formContainer button:hover {
+    background-color: #0056b3;
+  }
+  
+  .userList {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .userListItem {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 10px;
     border-bottom: 1px solid #ccc;
-}
-
-.userItem span {
-    margin-right: 10px;
-}
+  }
+  
+  .userListItem p {
+    margin: 0;
+  }
+  
+  .userListItem button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #dc3545;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .userListItem button:hover {
+    background-color: #c82333;
+  }
+  
+  .volver {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #28a745;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none; 
+  }
+  
+  .volver:hover {
+    background-color: #218838;
+  }
+  

@@ -62,6 +62,29 @@ export const usuarioReducer = (
     case UsuarioActionTypes.LOGOUT_USUARIO: {
       return { ...state, currentUser: null };
     }
+    
+    case UsuarioActionTypes.CAMBIAR_EMAIL_USUARIO:
+      return {
+        ...state,
+        usuarios: {
+          ...state.usuarios,
+          [action.payload.usuarioID]: {
+            ...state.usuarios[action.payload.usuarioID],
+            email: action.payload.email,
+          },
+        },
+      };
+    case UsuarioActionTypes.CAMBIAR_PASSWORD_USUARIO:
+      return {
+        ...state,
+        usuarios: {
+          ...state.usuarios,
+          [action.payload.usuarioID]: {
+            ...state.usuarios[action.payload.usuarioID],
+            password: action.payload.password,
+          },
+        },
+      };  
 
     default:
       return state;

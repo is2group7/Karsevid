@@ -7,7 +7,7 @@ import MyPointer from '../../componentes/InterfazGrafica/pointer/MyPointer';
 import cl from './PaginaInicio.module.scss';
 import monigoteInicio from '../../../assets/monigoteInicio.svg';
 import { NavLink } from "react-router-dom";
-
+import toast from 'react-hot-toast';
 
 
 const PaginaPrincipal: React.FC = () => {
@@ -23,6 +23,9 @@ const PaginaPrincipal: React.FC = () => {
     if (email && password) {
       loginUsuario({ email, password });
       setIsError(false);
+      toast('Te has logeado correctamente', {
+        icon: '🌀',
+      });
     } else {
       setIsError(true);
     }

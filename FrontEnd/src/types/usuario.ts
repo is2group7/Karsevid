@@ -19,6 +19,8 @@ export interface InterfazUsuario {
     SET_USUARIO = "SET_USUARIO",
     LOGIN_USUARIO = "LOGIN_USUARIO",
     LOGOUT_USUARIO = "LOGOUT_USUARIO",
+    CAMBIAR_EMAIL_USUARIO = "CAMBIAR_EMAIL_USUARIO",
+    CAMBIAR_PASSWORD_USUARIO = "CAMBIAR_PASSWORD_USUARIO",
   }
   
   interface AddUsuarioAction {
@@ -49,12 +51,24 @@ export interface InterfazUsuario {
   interface LogoutUsuarioAction {
     type: UsuarioActionTypes.LOGOUT_USUARIO;
   }
+
+  interface CambiarEmailUsuarioAction {
+    type: UsuarioActionTypes.CAMBIAR_EMAIL_USUARIO;
+    payload: { usuarioID: string; email: string };
+  }
   
+  interface CambiarPasswordUsuarioAction {
+    type: UsuarioActionTypes.CAMBIAR_PASSWORD_USUARIO;
+    payload: { usuarioID: string; password: string };
+  }  
+
   export type UsuarioAction =
     | AddUsuarioAction
     | EliminarUsuarioAction
     | CambiarNombreUsuarioAction
     | SetUsuarioAction
+    | CambiarEmailUsuarioAction
+    | CambiarPasswordUsuarioAction
     | LoginUsuarioAction
     | LogoutUsuarioAction;
   

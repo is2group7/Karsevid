@@ -7,7 +7,7 @@ import MyLabel from '../../componentes/InterfazGrafica/label/MyLabel';
 import MyPointer from '../../componentes/InterfazGrafica/pointer/MyPointer';
 import cl from './Register.module.scss';
 import { NavLink, useHistory} from "react-router-dom";
-
+import toast from 'react-hot-toast';
 
 const Register: React.FC = () => {
   const { inputValue, isOpen, isError } = useTypedSelector(
@@ -34,8 +34,10 @@ const Register: React.FC = () => {
       submitFormSuccess();
       setEmail('');
       setPassword('');
+      toast.success('Registrado con exito!')
       history.push("/");
     } else {
+      toast.error("Ocurrio un error")
       submitFormError();
     }
   };

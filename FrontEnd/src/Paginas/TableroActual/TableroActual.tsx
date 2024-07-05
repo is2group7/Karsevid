@@ -1,4 +1,3 @@
-// paginas/TableroActual/TableroActual.tsx
 import React, { FC } from "react";
 import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";

@@ -17,24 +17,17 @@ export const addUsuario = ({
   };
 };
 
-export const eliminarUsuario = ({
-  id: usuarioID,
-}: {
-  id: string;
-}): UsuarioAction => {
-  return { type: UsuarioActionTypes.ELIMINAR_USUARIO, payload: { usuarioID } };
+export const eliminarUsuario = (usuarioID: { usuarioID: string }) => {
+  return {
+      type: UsuarioActionTypes.ELIMINAR_USUARIO,
+      payload: usuarioID
+  };
 };
 
-export const cambiarNombreUsuario = ({
-  id: usuarioID,
-  nombre,
-}: {
-  id: string;
-  nombre: string;
-}): UsuarioAction => {
-  return {
-    type: UsuarioActionTypes.CAMBIAR_NOMBRE_USUARIO,
-    payload: { usuarioID, nombre },
+export const cambiarNombreUsuario = (usuario: { usuarioID: string; nombre: string }) => {
+  return{
+      type: UsuarioActionTypes.CAMBIAR_NOMBRE_USUARIO,
+      payload: usuario
   };
 };
 
@@ -57,4 +50,18 @@ export const loginUsuario = ({
 
 export const logoutUsuario = (): UsuarioAction => {
   return { type: UsuarioActionTypes.LOGOUT_USUARIO };
+};
+
+export const cambiarEmailUsuario = (usuario: { usuarioID: string; email: string }) => {
+  return  {
+      type: UsuarioActionTypes.CAMBIAR_EMAIL_USUARIO,
+      payload: usuario
+  };
+};
+
+export const cambiarPasswordUsuario = (usuario: { usuarioID: string; password: string }) => {
+  return {
+      type: UsuarioActionTypes.CAMBIAR_PASSWORD_USUARIO,
+      payload: usuario
+    };
 };
