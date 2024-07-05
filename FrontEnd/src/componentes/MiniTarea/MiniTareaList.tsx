@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import MiniTarea from "./css/MiniTareaList.scss";
-import cl from "./MiniTareaList.module.scss";
+import MiniTarea from "./MiniTarea";
+import cl from "./css/MiniTareaList.module.scss";
 
 interface MiniTareaListProps {
     miniTareaIDs: string[];

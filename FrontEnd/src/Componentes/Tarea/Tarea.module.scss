@@ -6,7 +6,7 @@
 	display: flex;
 	align-items: center;
 
-	font-size: 2.5rem;
+	font-size: 5rem;
 
 	transition: color 0.1s ease-in, transform 0.1s ease-in;
 
@@ -40,6 +40,7 @@
 .tarea {
 	position: relative;
 	z-index: 1000;
+	align-items: center; 
 
 	margin-bottom: 1rem;
 	padding: 1.5rem 2rem;
@@ -124,16 +125,35 @@
 	}
 }
 
-.titleContainer {
-	display: flex;
-	flex: 1 1 auto;
-	align-items: center;
-	justify-content: space-between;
+.tarea__inner {
+    display: flex;
+    flex-direction: column;  /* Esto asegura que todos los hijos de tarea__inner se apilen verticalmente */
 }
+
+.titleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.tarea__title {
+    flex-grow: 1;  /* Permite que el título ocupe todo el espacio horizontal disponible */
+    margin-right: 10px;  /* Añade espacio entre el título y el botón de expandir/colapsar */
+}
+
+
+.tarea__details {
+    width: 100%; // Asegura que los detalles ocupen todo el ancho disponible
+    padding: 10px 0; // Añade un poco de espacio arriba y abajo de los detalles
+    border-top: 2px solid #cea203; // Opcional, añade una línea para separar visualmente los detalles
+}
+
+
 
 .complete {
 	background-color: #dee2e6;
-
+	
 	.card__title {
 		color: #6c757d;
 

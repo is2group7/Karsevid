@@ -13,22 +13,15 @@ interface TareaFormProps {
 }
 
 const TareaForm: FC<TareaFormProps> = ({ tableroID, tarjetaID }) => {
-	
     const [isOpen, setOpen] = useState(false);
+    const [inputValue, setInputValue] = useState("");
+    const [descripcionValue, setDescripcionValue] = useState("");
+	const [fechaVencimiento, setFechaVencimientoLocal] = useState("");
+    const [maxMiniTareas, setMaxMiniTareas] = useState(5); 
     const [selectedUsuarios, setSelectedUsuarios] = useState<string[]>([]);
-    const [fechaVencimiento, setFechaVencimientoLocal] = useState("");
+    const { addTarea, submitFormSuccess, submitFormCancel, submitFormError } = useActions();
+    const { isError } = useTypedSelector(state => state.form);
 
-    const { inputValue, descripcionValue, isError } = useTypedSelector(state => state.form);
-    const {
-        addTarea,
-        submitFormSuccess,
-        submitFormCancel,
-        submitFormError,
-        setInputValue,
-        setDescripcionValue
-    } = useActions();
-
-    // Obtener datos del tablero y espacio
     const tablero = useTypedSelector(state => state.tablero.tableros[tableroID]);
     const espacioUsuariosIDs = useTypedSelector(state => state.espacio.espacios[tablero.espacioID]?.usuarios || []);
     const usuariosDetalles = useTypedSelector(state => state.usuario.usuarios);
@@ -40,27 +33,25 @@ const TareaForm: FC<TareaFormProps> = ({ tableroID, tarjetaID }) => {
             return;
         }
 
-        
         addTarea({
             tableroID,
             tarjetaID,
             id: String(Date.now()),
             nombre_tarea: inputValue,
             descripcion: descripcionValue,
-            fechaCreacion: new Date(), 
-            fechaVencimiento: new Date(fechaVencimiento), 
+            fechaCreacion: new Date(),
+            fechaVencimiento: new Date(fechaVencimiento),
             usuariosAsignado: selectedUsuarios,
             miniTareas: [],
             tareaFinalizada: false,
-            maxMiniTareas: 5,
+            maxMiniTareas,
         });
-
 
         submitFormSuccess();
         setInputValue("");
         setDescripcionValue("");
         setFechaVencimientoLocal("");
-        setOpen(false); 
+        setOpen(false);
     };
 
     const handleUsuarioChange = (usuarioID: string) => {
@@ -77,10 +68,12 @@ const TareaForm: FC<TareaFormProps> = ({ tableroID, tarjetaID }) => {
                         <MyPointer isError={isError}>Completa todos los campos</MyPointer>
                     </div>
                     <div className={cl.tareaForm__body}>
+						<h5>Nombre Tarjeta</h5>
                         <MyInput
                             value={inputValue}
                             onChange={setInputValue}
                         />
+						<h5>Descripcion</h5>
                         <MyInput
                             value={descripcionValue}
                             onChange={setDescripcionValue}
@@ -91,6 +84,15 @@ const TareaForm: FC<TareaFormProps> = ({ tableroID, tarjetaID }) => {
                                 type="date"
                                 value={fechaVencimiento}
                                 onChange={e => setFechaVencimientoLocal(e.target.value)}
+                            />
+                        </label>
+                        <label>
+                            Máximo de Mini Tareas
+                            <input
+                                type="number"
+                                value={maxMiniTareas}
+                                onChange={(e) => setMaxMiniTareas(Number(e.target.value))}
+                                min="1"
                             />
                         </label>
                         <h3>Selecciona los usuarios asignados a la tarea:</h3>
