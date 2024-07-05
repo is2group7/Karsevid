@@ -10,7 +10,7 @@ import { useActions } from "../../hooks/useActions";
 import MyInput from "../InterfazGrafica/input/MyInput";
 import { validate } from "../../utils/validacion";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import MiniTareaList from "../../componentes/MiniTarea/MiniTareaList";
+import MiniTareaList from "../MiniTarea/MiniTareaList";
 import MiniTareaForm from "../MiniTarea/MiniTareaForm";
 import toast from 'react-hot-toast';
 
