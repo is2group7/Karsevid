@@ -10,6 +10,8 @@ import { useActions } from "../../hooks/useActions";
 import MyInput from "../InterfazGrafica/input/MyInput";
 import { validate } from "../../utils/validacion";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
+import MiniTareaList from "../../componentes/MiniTarea/MiniTareaList"
+import MiniTareaForm from "../MiniTarea/MiniTareaForm";
 
 interface TareaProps {
     tarea: InterfazTarea;
@@ -50,7 +52,7 @@ const Tarea: FC<TareaProps> = ({ tarea, index }) => {
 
     const renderActionButtons = () => (
         <div className={cl.actionContainer}>
-            <BotonPrincipal onClick={() => finalizarTarea({ id: tarea.id })} className={cl.tarea__btn}>
+            <BotonPrincipal onClick={() => finalizarTarea({ id: tarea.id })} className={cl.tarea_btn}>
                 {tarea.tareaFinalizada ? <TiArrowBack /> : <MdDone />}
             </BotonPrincipal>
             <BotonPrincipal onClick={() => eliminarTarea({ id: tarea.id, tarjetaID: tarea.tarjetaID })}>
@@ -61,7 +63,7 @@ const Tarea: FC<TareaProps> = ({ tarea, index }) => {
 
     const renderTitleContainer = () => (
         <div className={cl.titleContainer}>
-            <h3 onClick={handleEditOpen} className={classNames(cl.tarea__title, tarea.tareaFinalizada ? "" : cl.tarea__title_hover)}>
+            <h3 onClick={handleEditOpen} className={classNames(cl.tarea__title, tarea.tareaFinalizada ? "" : cl.tarea_title_hover)}>
                 {tarea.nombre_tarea}
             </h3>
             <BotonPrincipal onClick={toggleDetails} className={cl.detailsToggle}>
@@ -100,6 +102,10 @@ const Tarea: FC<TareaProps> = ({ tarea, index }) => {
                                                 ))}
                                             </ul>
                                         </div>
+                                        <h4>Tareas:</h4>
+                                        <MiniTareaList miniTareaIDs={tarea.miniTareas} />
+                                        <MiniTareaForm tareaID={tarea.id} /> 
+              
                                     </div>
                                 )}
                                 {renderActionButtons()}

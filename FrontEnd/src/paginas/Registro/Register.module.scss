@@ -1,3 +1,20 @@
+@font-face {
+  font-family: 'kremlin';
+  src: url('../../../assets/fonts/kremlin.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.header {
+  display: block;
+  align-items: flex-start;
+  justify-content: start;
+  margin-bottom: 0rem;
+  font-family: 'kremlin';
+  padding-left: 2rem; 
+  font-size: 2rem; 
+}
+
 .contenedorGeneral {
     display: flex;
     flex-direction: column;
@@ -10,12 +27,6 @@
     align-self: flex-start;
   }
 
-.header {
-    display: block;
-    align-items: flex-start;
-    justify-content: start;
-    margin-bottom: 0rem;
-  }
 
   .link{
     z-index: 10;

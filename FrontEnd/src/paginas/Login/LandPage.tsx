@@ -9,6 +9,7 @@ import monigoteInicio from '../../../assets/monigoteInicio.svg';
 import { NavLink } from "react-router-dom";
 
 
+
 const PaginaPrincipal: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -36,7 +37,7 @@ const PaginaPrincipal: React.FC = () => {
   return (
     <div className={cl.paginaPrincipal}>
       <BotonPrincipal className={cl.header} type="button" onClick={() => submitFormCancel()}>
-        <NavLink className={cl.link} to="/"><h2>Karsevid</h2></NavLink>
+        <NavLink className={cl.link} to="/"><h1>Karsevid</h1></NavLink>
       </BotonPrincipal>
       <div className={cl.contenedorPrincipal}>
         <div className={cl.container}>

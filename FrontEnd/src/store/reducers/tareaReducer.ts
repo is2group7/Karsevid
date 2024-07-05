@@ -32,7 +32,7 @@ export const tareaReducer = (
                 tareas: { ...state.tareas, [tareaID]: nuevaTarea },
             };
         }
-		case TareaActionTypes.ADD_MINI_TAREA: {
+		case TareaActionTypes.ADD_MINI_TO_TAREA: {
             const { tareaID, miniTareaID } = action.payload;
             const tarea = state.tareas[tareaID];
             if (tarea && tarea.miniTareas.length < tarea.maxMiniTareas) {

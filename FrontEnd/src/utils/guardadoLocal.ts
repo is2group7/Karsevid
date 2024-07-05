@@ -53,14 +53,14 @@ export const setState = ({
 	tareas,
 	usuarios,
 	espacios,
-	miniTarea,
+	miniTareas,
 }: {
 	tableros: { [tableroID: string]: IntefazTablero };
 	tarjetas: { [tarjetaID: string]: InterfazTarjeta };
 	tareas: { [tareaID: string]: InterfazTarea };
 	usuarios: {[usuarioID: string]: InterfazUsuario}
 	espacios: {[espacioID: string]: InterfazEspacio}
-	miniTarea: {[miniTareaID: string]: InterfazMiniTarea}
+	miniTareas: {[miniTareaID: string]: InterfazMiniTarea}
 }) => {
 	try {
 		const localStorageCollection = {
@@ -69,7 +69,7 @@ export const setState = ({
             tareas,
 			usuarios,
 			espacios,
-			miniTarea,
+			miniTareas,
 		};
 		localStorage.setItem(
 			"boardsCollection",

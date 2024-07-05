@@ -23,7 +23,7 @@ export interface EstadoTarea {
 
 export enum TareaActionTypes {
 	ADD_TAREA = "ADD_TAREA",
-	ADD_MINI_TAREA = "ADD_MINI_TAREA",
+	ADD_MINI_TO_TAREA = "ADD_MINI_TO_TAREA",
 	ELIMINAR_MINI_TAREA = "ELIMINAR_MINI_TAREA",
 	UPDATE_MAX_MINI_TAREAS = "UPDATE_MAX_MINI_TAREAS",
 	ELIMINAR_TAREA = "ELIMINAR_TAREA",
@@ -36,7 +36,7 @@ export enum TareaActionTypes {
 }
 
 interface AddMiniTareaAction {
-    type: TareaActionTypes.ADD_MINI_TAREA;
+    type: TareaActionTypes.ADD_MINI_TO_TAREA;
     payload: { tareaID: string; miniTareaID: string };
 }
 

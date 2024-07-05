@@ -44,7 +44,7 @@ const Register: React.FC = () => {
     <div className={cl.contenedorGeneral}>
       <div className={cl.contenedorHeader}>
         <BotonPrincipal className={cl.header} type="button" onClick={() => submitFormCancel()}>
-          <NavLink className={cl.link} to="/"><h2>Karsevid</h2></NavLink>
+          <NavLink className={cl.link} to="/"><h1>Karsevid</h1></NavLink>
         </BotonPrincipal>
       </div>
       <div className={cl.contenedorRegistro}>

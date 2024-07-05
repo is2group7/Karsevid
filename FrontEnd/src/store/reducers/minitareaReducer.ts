@@ -14,6 +14,7 @@ export const miniTareaReducer = (state = initialState, action: MiniTareaAction):
                     [action.payload.id]: action.payload
                 }
             };
+           
         case MiniTareaActionTypes.ELIMINAR_MINI_TAREA:
             const newMiniTareas = { ...state.miniTareas };
             delete newMiniTareas[action.payload.id];
@@ -22,6 +23,10 @@ export const miniTareaReducer = (state = initialState, action: MiniTareaAction):
                 miniTareas: newMiniTareas
             };
         case MiniTareaActionTypes.FINALIZAR_MINI_TAREA:
+            if (!state.miniTareas[action.payload.id]) {
+                console.error("Intento de finalizar una miniTarea que no existe:", action.payload.id);
+                return state; 
+            }
             return {
                 ...state,
                 miniTareas: {
@@ -48,6 +53,7 @@ export const miniTareaReducer = (state = initialState, action: MiniTareaAction):
                 ...state,
                 miniTareas: action.payload
             };
+                
         default:
             return state;
     }

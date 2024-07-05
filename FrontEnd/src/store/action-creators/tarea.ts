@@ -45,7 +45,7 @@ export const eliminarTarea = ({
 	};
 };
 
-export const addMiniTarea = ({
+export const addMiniTareaToTarea  = ({
     tareaID,
     miniTareaID
 }: {
@@ -53,7 +53,7 @@ export const addMiniTarea = ({
     miniTareaID: string;
 }): TareaAction => {
     return {
-        type: TareaActionTypes.ADD_MINI_TAREA,
+        type: TareaActionTypes.ADD_MINI_TO_TAREA,
         payload: { tareaID, miniTareaID }
     };
 };

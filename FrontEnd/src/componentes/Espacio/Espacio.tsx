@@ -28,6 +28,7 @@ const Espacio: FC<EspacioProps> = ({ id, nombre }) => {
     event.preventDefault();
   };
 
+
   const handleEditClose = () => {
     setEditMode(false);
     setEspacioTitle(nombre);
@@ -71,7 +72,7 @@ const Espacio: FC<EspacioProps> = ({ id, nombre }) => {
               value={nombreEspacio}
               autoFocus={true}
               onBlur={handleEditClose}
-              onChange={(e) => setEspacioTitle}
+              onChange={setEspacioTitle}
               className={cl.espacio__input}
             />
           </form>

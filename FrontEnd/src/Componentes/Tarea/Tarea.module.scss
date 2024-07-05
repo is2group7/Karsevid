@@ -127,7 +127,7 @@
 
 .tarea__inner {
     display: flex;
-    flex-direction: column;  /* Esto asegura que todos los hijos de tarea__inner se apilen verticalmente */
+    flex-direction: column;  
 }
 
 .titleContainer {
@@ -138,15 +138,15 @@
 }
 
 .tarea__title {
-    flex-grow: 1;  /* Permite que el título ocupe todo el espacio horizontal disponible */
-    margin-right: 10px;  /* Añade espacio entre el título y el botón de expandir/colapsar */
+    flex-grow: 1;  
+    margin-right: 10px;  
 }
 
 
 .tarea__details {
-    width: 100%; // Asegura que los detalles ocupen todo el ancho disponible
-    padding: 10px 0; // Añade un poco de espacio arriba y abajo de los detalles
-    border-top: 2px solid #cea203; // Opcional, añade una línea para separar visualmente los detalles
+    width: 100%; 
+    padding: 10px 0; 
+    border-top: 2px solid #cea203;
 }
 
 

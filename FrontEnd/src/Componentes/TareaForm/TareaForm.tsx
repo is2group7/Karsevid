@@ -7,6 +7,7 @@ import MyPointer from "../InterfazGrafica/pointer/MyPointer";
 import { validate } from "../../utils/validacion";
 import cl from "./TareaForm.module.scss";
 
+
 interface TareaFormProps {
     tableroID: string;
     tarjetaID: string;
@@ -28,7 +29,7 @@ const TareaForm: FC<TareaFormProps> = ({ tableroID, tarjetaID }) => {
 
     const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if (!validate(inputValue) || !validate(descripcionValue)) {
+        if (!validate(inputValue) || !validate(descripcionValue) || !fechaVencimiento ) {
             submitFormError();
             return;
         }

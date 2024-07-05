@@ -78,7 +78,7 @@ const EspacioForm: FC = () => {
             <div className={cl.espacioForm__usuarios}>
               <h3>Selecciona los usuarios que pertenecen a este espacio:</h3>
               {Object.values(usuarios).map((usuario) => (
-                usuario.id !== currentUser && ( // Excluir al usuario principal
+                usuario.id !== currentUser && ( 
                   <label key={usuario.id}>
                     <input
                       type="checkbox"
