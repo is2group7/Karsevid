@@ -5,7 +5,6 @@ import EspacioList from "../../componentes/EspacioList/EspacioList";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useActions } from "../../hooks/useActions";
 import cl from "./Espacios.module.scss";
-import BotonVolver from "../../componentes/InterfazGrafica/boton/BotonVolver/BotonVolver.module";
 
 const Espacios: FC = () => {
   const { espacios } = useTypedSelector((state) => state.espacio);

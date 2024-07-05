@@ -15,7 +15,7 @@ cListarTableros = """select tab.cod_tablero, tab.nom_tablero, tab.desc_tablero, 
 # Modelo respuesta genérica
 class Respuesta(models.Model):
     cod_respuesta = models.IntegerField()
-    mensaje       = models.CharField(max_length=255)
+    mensaje       = models.TextField()
     det_mensaje   = models.CharField(max_length=1024, blank=True, null=True)
 
     def __init__(self, cod_respuesta, mensaje):
@@ -76,6 +76,10 @@ class UsuarioRegistro(models.Model):
     apellidos    = models.CharField(max_length=60)
     dir_correo   = models.CharField(max_length=100)
     password     = models.CharField(max_length=300, db_column='pass_usuario')
+    databag_storage = models.TextField()
+
+    def actualizarDatabag(self, databag):
+        self.databag_storage = databag
 
     class Meta: 
         db_table = 'usuarios'
@@ -84,18 +88,21 @@ class UsuarioRegistro(models.Model):
 class AuthUsuario(models.Model):
     cod_usuario = models.IntegerField()
     nom_usuario = models.CharField(max_length=30)
+    email       = models.CharField(max_length=100)
     password    = models.CharField(max_length=300)
+    databag_storage = models.TextField()
 
-    def __init__(self, nom_usuario,password):
-        self.nom_usuario = nom_usuario
+    def __init__(self, email,password):
+        self.email = email
         self.password = password
 
     def validarUsuario(self):
-        sql = f"select a.cod_usuario from usuarios a where a.nom_usuario = '{self.nom_usuario}' and a.pass_usuario = '{self.password}'"
+        sql = f"select a.cod_usuario, a.databag_storage from usuarios a where a.dir_correo = '{self.email}' and a.pass_usuario = '{self.password}'"
         res = django_con.consultaSQL(sql,1)
         print(res)
         if res:
             self.cod_usuario = res[0]
+            self.databag_storage = res[1].replace('\n','')
             return True
         else:
             return False
@@ -108,7 +115,7 @@ class AuthUsuario(models.Model):
                                    estado = 'ACTIVO', inicio_sesion = None, fin_sesion = None)
                 sesionUsu.save()
 
-            return sesionUsu.id_sesion
+            return self.databag_storage
         else:
             return None
     

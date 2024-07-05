@@ -9,12 +9,8 @@ import cl from './Register.module.scss';
 import { NavLink, useHistory} from "react-router-dom";
 
 import ApiConexion from '../../Componentes/ApiConexion';
+import toast, { Toaster } from 'react-hot-toast';
 
-
-interface ResApi {
-  codigo: number;
-  mensaje: string;
-}
 const Register: React.FC = () => {
   const { inputValue, isOpen, isError } = useTypedSelector(
     (state) => state.form
@@ -34,7 +30,7 @@ const Register: React.FC = () => {
   const history = useHistory();
 
   const requestRegister = async () => {
-    const method = 'GET';
+    const method = 'POST';
     const endpoint = 'registro';
     const requestBody = {
       usuario: inputValue,
@@ -44,28 +40,27 @@ const Register: React.FC = () => {
       password: password
     };
 
-    try {
-      await ApiConexion({ method, endpoint, requestBody });
-      console.log('terminó');
-    } catch (error) {
-      return { res: null, error };
-    }
+    console.log('Llamamos al api');
+    return ApiConexion({ method, endpoint, requestBody });
   };
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (inputValue && email && password) {
       try {
-        const error = await requestRegister();
-
-        if (error) {
-          submitFormError();
-          console.error('Error al registrar:', error);
-        } else {
+        const res = await requestRegister();
+        console.log('Obtenemos del api: ' + res?.mensaje);
+    
+        if(res?.codigo === 0){
+          toast('Usuario');
+          <Toaster />
           submitFormSuccess();
           setEmail('');
           setPassword('');
-          history.push('/');
+          history.push('/');  
+        }else{
+          console.error('Ocurrió un error al registrar ' + res?.mensaje);
+          submitFormError();
         }
       } catch (error) {
         console.error('Error al registrar:', error);

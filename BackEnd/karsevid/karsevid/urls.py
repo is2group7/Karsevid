@@ -35,5 +35,9 @@ urlpatterns = [
     path('api/tableros/crear', views.crearTableros, name='crearTableros'),
 
     #front
-    path('login/', frontViews.login, name='login')
+    path('login/', frontViews.login, name='login'),
+
+    #databag
+    path('api/databag/obtener', views.obtenerDatabag, name='obtenerDatabag'),
+    path('api/databag/guardar', views.guardarDatabag, name='guardarDatabag'),
 ]

@@ -7,7 +7,8 @@ import MyPointer from '../../componentes/InterfazGrafica/pointer/MyPointer';
 import cl from './PaginaInicio.module.scss';
 import monigoteInicio from '../../../assets/monigoteInicio.svg';
 import { NavLink } from "react-router-dom";
-
+import ApiConexion from '../../Componentes/ApiConexion';
+import { obtenerDatabag, guardarDatabag } from '../../Componentes/DatabagApi';
 
 const PaginaPrincipal: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -17,21 +18,43 @@ const PaginaPrincipal: React.FC = () => {
   const currentUser = useTypedSelector((state) => state.usuario.currentUser);
   const history = useHistory();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const loginUser = async () => {
+    const method = 'POST';
+    const endpoint = 'autenticar';
+    const requestBody = {
+      email: email,
+      password: password
+    };
+
+    console.log('Llamamos al api');
+    return ApiConexion({ method, endpoint, requestBody });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (email && password) {
-      loginUsuario({ email, password });
-      setIsError(false);
+      loginUsuario({email, password});
+      console.log('Email: ' + email + ' password: ' + password);
+      const res = await loginUser();
+
+      if(res?.codigo === 0){
+        // OBTENER STORAGE
+        const resDatabag = await obtenerDatabag();
+        console.log(resDatabag?.mensaje);
+
+        // GUARDAR STORAGE
+        const resSaveDatabag = await guardarDatabag();
+        console.log(resDatabag?.codigo) // SI DA 0 es que guardó bien
+        setIsError(false);
+        history.push('/espacios');
+      }else{
+        setIsError(true);
+      }
+
     } else {
       setIsError(true);
     }
   };
-
-  useEffect(() => {
-    if (currentUser) {
-      history.push('/espacios');
-    }
-  }, [currentUser, history]);
 
   return (
     <div className={cl.paginaPrincipal}>

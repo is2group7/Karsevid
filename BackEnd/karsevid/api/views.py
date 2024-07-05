@@ -13,14 +13,14 @@ def autenticar(request):
     if request.method == 'POST':
         # Obtener datos del request
         reqBody = json.loads(request.body) 
-        usuario = reqBody.get('usuario','')
+        email = reqBody.get('email','')
         password = reqBody.get('password','')
         
         # Crear objeto en base 
-        auth = AuthUsuario(usuario, password)
-        uuidSesion = auth.iniciarSesion()
-        if uuidSesion != None:
-            res = Respuesta(0, uuidSesion, '')
+        auth = AuthUsuario(email, password)
+        databag = auth.iniciarSesion()
+        if databag != None:
+            res = Respuesta(0, databag, '')
             return res.toJson()
         else:
             res = Respuesta(10, 'Usuario o Contraseña inválidos!','')
@@ -217,4 +217,48 @@ def crearTableros(request):
         except Exception as e:
             res = Respuesta(-1, 'Ha ocurrido un error inesperado',str(e))
             log.apiLogger.error(str(res))
+            return res.toJson()
+
+# DATABAGS
+
+def obtenerDatabag(request):
+    if request.method == 'GET':
+        #Obtenemos datos del request
+        log.apiLogger.info('Se ingresa a servicio /api/databag/obtener')
+        try:
+            resSQL = django_con.consultaSQL('select a.databag_storage from usuarios a where a.cod_usuario = 1', 1)
+            if resSQL:
+                res = Respuesta(0, resSQL[0],'')
+            else:
+                res = Respuesta(-1,'No existe databag','')
+            return res.toJson()
+        except Exception as e:
+            res = Respuesta(-1, 'Ha ocurrido un error inesperado',str(e))
+            log.apiLogger.error(str(res))
+            return res.toJson()
+    else:
+            res = Respuesta(-100, 'Metodo de acceso no es el correcto','')
+            return res.toJson()
+    
+def guardarDatabag(request):
+    if request.method == 'POST':
+        #Obtenemos datos del request
+        reqBody = json.loads(request.body)
+        databag = reqBody.get('databag_storage','')
+        
+        log.apiLogger.info('Se ingresa a servicio /api/databag/guardar')
+        try:
+            log.apiLogger.info('Lllega')
+            authDatabag = UsuarioRegistro.objects.get(pk=1)
+            authDatabag.actualizarDatabag(databag)
+            authDatabag.save()
+            log.apiLogger.info('Finaliza')
+            res =  Respuesta(0, 'Se realizó la actualización del databag',';)')
+            return res.toJson()
+        except Exception as e:
+            res = Respuesta(-1, 'Ha ocurrido un error inesperado',str(e))
+            log.apiLogger.error(str(res))
+            return res.toJson()
+    else:
+            res = Respuesta(-100, 'Metodo de acceso no es el correcto','')
             return res.toJson()
