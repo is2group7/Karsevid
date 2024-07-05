@@ -9,7 +9,7 @@ import cl from "./Tableros.module.scss";
 import ReturnButton from "../../componentes/InterfazGrafica/boton/BotonVolver/BotonVolver.module";
 
 const TablerosDelEspacio: FC = () => {
-  const { id: espacioID } = useParams<{ id: string }>(); // Obtén el ID del espacio desde los parámetros de la URL
+  const { id: espacioID } = useParams<{ id: string }>(); 
   const { tableros } = useTypedSelector((state) => state.tablero);
   const espacio = useTypedSelector((state) => state.espacio.espacios[espacioID]);
   const { submitFormCancel } = useActions();
@@ -24,9 +24,11 @@ const TablerosDelEspacio: FC = () => {
 
   return (
     <div className={cl.container}>
-      <ReturnButton url="/espacios" onClick={() => submitFormCancel()}>
-        Volver a tus espacios
-      </ReturnButton>
+      <div className={cl.returnButton}>
+        <ReturnButton  url="/espacios"  onClick={() => submitFormCancel()} >
+          Volver a tus espacios
+        </ReturnButton>
+      </div>
       <h1>Estás en el espacio {espacio.nombre}</h1>
       <div className={cl.tableros}>
         <div className={classNames(cl.row, cl.row_form)}>

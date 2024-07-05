@@ -1,19 +1,24 @@
 .iconContainer {
 	display: flex;
+	justify-content: space-between;
+}
+
+.botonexpandir{
+	font-size: 5rem;
 }
 
 .icon {
 	display: flex;
 	align-items: center;
 
-	font-size: 5rem;
+	font-size: 2rem;
 
 	transition: color 0.1s ease-in, transform 0.1s ease-in;
 
 	&_remove {
 		margin-left: 0.5rem;
 
-		color: #6c757d;
+		color: #ffffff;
 
 		&:hover {
 			color: #ff220f;
@@ -41,7 +46,6 @@
 	position: relative;
 	z-index: 1000;
 	align-items: center; 
-
 	margin-bottom: 1rem;
 	padding: 1.5rem 2rem;
 
@@ -51,8 +55,15 @@
 
 	transition: box-shadow 0.1s ease-in, background-color 0.1s ease-in;
 
+	&__details {
+		margin-top: 1rem;
+		padding-top: 1rem;
+		border-top: 1px solid #ccc;
+	}
+
 	&.overdue {
-        background-color: #ee8282; 
+		
+        background-color: #d19fa1; 
     }
 
 	&__inner {
@@ -60,13 +71,15 @@
 
 		display: flex;
 		align-items: center;
+		
 		justify-content: space-between;
 
-		color: #00296b;
+		color: #f8f9fb;
 	}
 
 	&__form {
 		width: 100%;
+		
 	}
 
 	&__input {
@@ -84,6 +97,8 @@
 
 	&__title {
 		position: relative;
+		color: #080b10;
+		font-size: 2.5rem;
 
 		flex: 1 1 auto;
 
@@ -98,6 +113,7 @@
 			position: absolute;
 			top: 50%;
 			left: 50%;
+		
 
 			width: 0;
 			height: 0.3rem;
@@ -122,6 +138,7 @@
 
 	&__btn {
 		margin-left: 1rem;
+		font-size: 5rem;
 	}
 
 	&:hover {
@@ -150,10 +167,8 @@
 .tarea__details {
     width: 100%; 
     padding: 10px 0; 
-    border-top: 2px solid #cea203;
+    border-top: 2px solid #f8f9fb;
 }
-
-
 
 .complete {
 	background-color: #dee2e6;
@@ -170,3 +185,7 @@
 		}
 	}
 }
+
+.complete.overdue {
+    background-color: #6c757d;
+  }

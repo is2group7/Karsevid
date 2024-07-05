@@ -62,11 +62,11 @@ const Tarea: FC<TareaProps> = ({ tarea, index }) => {
     }, [isOverdue, tarea.nombre_tarea]);
 
     const renderActionButtons = () => (
-        <div className={cl.actionContainer}>
-            <BotonPrincipal onClick={() => finalizarTarea({ id: tarea.id })} className={cl.tarea_btn}>
+        <div className={cl.iconContainer}>
+            <BotonPrincipal onClick={() => finalizarTarea({ id: tarea.id })} className={cl.icon}>
                 {tarea.tareaFinalizada ? <TiArrowBack /> : <MdDone />}
             </BotonPrincipal>
-            <BotonPrincipal onClick={() => eliminarTarea({ id: tarea.id, tarjetaID: tarea.tarjetaID })}>
+            <BotonPrincipal onClick={() => eliminarTarea({ id: tarea.id, tarjetaID: tarea.tarjetaID })} className={cl.icon}>
                 <MdDelete />
             </BotonPrincipal>
         </div>
@@ -77,8 +77,8 @@ const Tarea: FC<TareaProps> = ({ tarea, index }) => {
             <h3 onClick={handleEditOpen} className={classNames(cl.tarea__title, tarea.tareaFinalizada ? "" : cl.tarea_title_hover)}>
                 {tarea.nombre_tarea}
             </h3>
-            <BotonPrincipal onClick={toggleDetails} className={cl.detailsToggle}>
-                {showDetails ? <MdExpandLess /> : <MdExpandMore />}
+            <BotonPrincipal onClick={toggleDetails}>
+                {showDetails ? <MdExpandLess className={cl.botonexpandir} /> : <MdExpandMore className={cl.botonexpandir} />}
             </BotonPrincipal>
         </div>
     );
@@ -108,6 +108,7 @@ const Tarea: FC<TareaProps> = ({ tarea, index }) => {
                                 {showDetails && (
                                     <div className={cl.tarea__details}>
                                         <p>Descripción: {tarea.descripcion}</p>
+                                        <p>Fecha Creacion: {tarea.fechaCreacion ? formatDate(String(tarea.fechaCreacion)) : 'No definida'} </p>
                                         <p>Fecha de Vencimiento: {tarea.fechaVencimiento ? formatDate(String(tarea.fechaVencimiento)) : 'No definida'}</p>
                                         <div>
                                             <h4>Usuarios Asignados:</h4>

@@ -110,12 +110,21 @@ const TareaForm: FC<TareaFormProps> = ({ tableroID, tarjetaID }) => {
                         ))}
                     </div>
                     <div className={cl.tareaForm__footer}>
-                        <BotonPrincipal type="submit">Aceptar</BotonPrincipal>
-                        <BotonPrincipal onClick={() => setOpen(false)}>Cancelar</BotonPrincipal>
+
+                        <BotonPrincipal type="submit" className={cl.tareaForm__btn}>
+                            Aceptar
+                        </BotonPrincipal>
+
+                        <BotonPrincipal onClick={() => setOpen(false)} className={cl.tareaForm__btn}>
+                            Cancelar
+                        </BotonPrincipal>
+                        
                     </div>
                 </form>
             ) : (
-                <BotonPrincipal onClick={() => setOpen(true)}>Agregar Nueva Tarea</BotonPrincipal>
+                <BotonPrincipal onClick={() => setOpen(true)} className={cl.btnAbrir}>
+                    Agregar Nueva Tarea
+                </BotonPrincipal>
             )}
         </div>
     );

@@ -9,7 +9,6 @@ import monigoteInicio from '../../../assets/monigoteInicio.svg';
 import { NavLink } from "react-router-dom";
 import toast from 'react-hot-toast';
 
-
 const PaginaPrincipal: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -18,16 +17,18 @@ const PaginaPrincipal: React.FC = () => {
   const currentUser = useTypedSelector((state) => state.usuario.currentUser);
   const history = useHistory();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (email && password) {
-      loginUsuario({ email, password });
-      setIsError(false);
-      toast('Te has logeado correctamente', {
-        icon: '🌀',
-      });
+      try {
+        await loginUsuario({ email, password });
+        setIsError(false);
+      } catch (error) {
+        setIsError(true);
+      }
     } else {
       setIsError(true);
+      toast.error('Todos los campos son obligatorios');
     }
   };
 
@@ -75,4 +76,5 @@ const PaginaPrincipal: React.FC = () => {
     </div>
   );
 };
+
 export default PaginaPrincipal;
