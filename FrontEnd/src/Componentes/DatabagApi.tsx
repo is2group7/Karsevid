@@ -14,10 +14,13 @@ const obtenerDatabag = async (): Promise<ResApi | null> => {
 };
 
 const guardarDatabag = async (): Promise<ResApi | null> => {
+    const localStorageData = { ...localStorage };
+    const jsonString = JSON.stringify(localStorageData, null, 2);
+    
     const method = 'POST';
     const endpoint = 'databag/guardar';
     const requestBody = {
-        databag_storage: 'hola' 
+        databag_storage: jsonString
     };
 
     console.log('Guardamos el databag');
