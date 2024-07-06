@@ -52,7 +52,7 @@ const Tarea: FC<TareaProps> = ({ tarea, index }) => {
     };
 
     
-    const isOverdue = new Date(tarea.fechaVencimiento) < new Date();
+    const isOverdue = new Date(tarea.fechaVencimiento) <= new Date();
 
     
     useEffect(() => {

@@ -5,43 +5,20 @@ import { InterfazTarjeta } from "../types/tarjeta";
 import { InterfazUsuario } from "../types/usuario";
 import { InterfazMiniTarea } from "../types/minitarea";
 
-// Modifica la URL de la API según corresponda
-const API_URL = 'https://192.168.100.155:8000/api/tableros/listar?cod_espacio=5';
-
-export const obtenerDatos = async () => {
-  try {
-    const respuesta = await fetch(API_URL);
-    const datos = await respuesta.json();
-	console.log('Datos obtenidos de la API:', datos)
-    return datos;
-  } catch (error) {
-    console.error('Error al obtener datos de la API:', error);
-    throw error;
-  }
-};
-
-// Aquí puedes usar la función obtenerDatos para obtener datos de tu API
-obtenerDatos()
-  .then((datos) => {
-    console.log('Datos obtenidos de la API:', datos);
-  })
-  .catch((error) => {
-    console.error('Error al obtener datos de la API:', error);
-  });
-
-
-
-
 export const getState = () => {
 	try {
 		const stateCollection = localStorage.getItem("boardsCollection");
 
 		if (stateCollection === null) {
+			console.log('No se encontró ninguna colección en localStorage.');
 			return undefined;
 		}
 
-		return JSON.parse(stateCollection);
+		const parsedState = JSON.parse(stateCollection);
+		console.log('Estado parseado de localStorage:', parsedState);
+		return parsedState;
 	} catch (e) {
+		console.error('Error al obtener el estado de localStorage:', e);
 		return undefined;
 	}
 };
@@ -71,14 +48,13 @@ export const setState = ({
 			espacios,
 			miniTareas,
 		};
+		console.log('Estado que se va a guardar en localStorage:', localStorageCollection);
 		localStorage.setItem(
 			"boardsCollection",
 			JSON.stringify(localStorageCollection)
 		);
 	} catch (e) {
+		console.error('Error al guardar el estado en localStorage:', e);
 		throw e;
 	}
 };
-
-
-  

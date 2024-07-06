@@ -5,6 +5,7 @@ import { useActions } from "./hooks/useActions";
 import { useTypedSelector } from "./hooks/useTypedSelector";
 import { Toaster } from 'react-hot-toast';
 import { obtenerDatabag, guardarDatabag } from "./utils/DataBagApi"; 
+import { setState } from "./utils/guardadoLocal";
 import "./styles/App.scss"; 
 
 
@@ -39,9 +40,19 @@ const App: FC = () => {
 
     useEffect(() => {
         const saveState = async () => {
-            await guardarDatabag();
+            const localStorageCollection = {
+                tableros,
+                tarjetas,
+                tareas,
+                usuarios,
+                espacios,
+                miniTareas
+            };
+            console.log('Estado que se va a guardar en localStorage:', localStorageCollection);
+            setState(localStorageCollection); // Guardar en localStorage
+            await guardarDatabag(); // Guardar en la API
         };
-
+		
         saveState();
     }, [tableros, tarjetas, tareas, usuarios, espacios, miniTareas]);
 
